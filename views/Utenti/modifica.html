@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript"></script>
+    <script>
+      $( document ).ready(function() {
+        $('#modificaUtente').click(function( event ) {
+          var obj = {};
+          obj['username']= document.getElementById('usernameMod').value;
+          obj['nome']= document.getElementById('nomeMod').value;
+          obj['cognome']= document.getElementById('cognomeMod').value;
+          obj['email']= document.getElementById('emailMod').value;
+          obj['password']= document.getElementById('passMod').value;
+          $.ajax({
+            url: 'http://localhost:8080/utente/modifica',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(obj),
+            dataType: 'json'
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>
+      <label>Username</label>
+      <input id="usernameMod" type="text" />
+    </p>
+
+    <p>
+      <label>Nome</label>
+      <input id="nomeMod" type="text"/>
+    </p>
+
+    <p>
+      <label>Cognome</label>
+      <input id="cognomeMod" type="text"/>
+    </p>
+
+    <p>
+      <label>Email</label>
+      <input id="emailMod" type="text"/>
+    </p>
+
+    <p>
+      <label>Password</label>
+      <input id="passMod" type="text"/>
+    </p>
+
+    <p>
+      <button id="modificaUtente">Modifica</button>
+    </p>
+  </body>
+</html>
