@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Elimina</title>
+    <script src="/js/jquery.js"></script>
+</head>
+
+<body>
+    <p>Inserisci l'id del modello da eliminare:</p>
+    <input type="text" placeholder="Id Modello" id="id_modello" />
+    <button type="submit" onclick="elimina_modello()">Elimina</button>
+
+    <script>
+        function elimina_modello() {
+            $(document).ready(function() {
+                var obj = document.getElementById("id_modello").value;
+                $.ajax({
+                    url: "http://localhost:8080/modello/elimina" + "/" + obj,
+                    type: "GET"
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
