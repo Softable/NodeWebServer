@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript"></script>
-    <script>
-      $( document ).ready(function() {
-          $('#eliminaUtente').click(function( event ) {
-            var obj = "/" + String(document.getElementById('usernameDel').value);
-            $.ajax({
-              url: 'http://localhost:8080/utente/elimina' + obj,
-              type: 'GET',
-            });
-          });
-      });
-    </script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/utente.js"></script>
   </head>
   <body>
     <p>
@@ -22,7 +11,7 @@
     </p>
 
     <p>
-      <button id="eliminaUtente">Elimina</button>
+      <button onclick="elimina_utente()">Elimina</button>
     </p>
   </body>
 </html>

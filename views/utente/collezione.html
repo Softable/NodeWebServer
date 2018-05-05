@@ -6,34 +6,10 @@
         border: 1px solid black;
       }
     </style>
-    <script language="javascript" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-      function visualizza(){
-        $( document ).ready(function() {
-          $('#tabella').ready(function( event ) {
-            $.get('http://localhost:8080/utente/collezione', function(data) {
-              $(function(){
-                var jsonObj = data;
-                var html = '';
-                $.each(jsonObj, function(key, value){
-                  html += '<tr>';
-                  html += '<td>' + key + '</td>';
-                  html += '<td>' + $(value).attr("nome") + '</td>';
-                  html += '<td>' + $(value).attr("cognome") + '</td>';
-                  html += '<td>' + $(value).attr("email") + '</td>';
-                  html += '<td>' + $(value).attr("password") + '</td>';
-                  html += '</tr>';
-                });
-                $('#tabella').append(html);
-              });
-            });
-          });
-        });
-      }
-    </script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/utente.js"></script>
   </head>
-  <body onload="visualizza()">
+  <body onload="visualizza_utenti()">
     <table style="border:'1';" id="tabella">
       <thead>
         <tr>

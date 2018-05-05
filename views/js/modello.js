@@ -23,6 +23,29 @@ function visualizza_collezione() {
     });
 }
 
+function inserisci_modello() {
+    $(document).ready(function() {
+        var obj = {}, attributi = [];
+
+        for (var i = 0; i < document.getElementsByName('att').length; i++)
+            attributi[i] = document.getElementsByName('att')[i].value;
+        obj = {
+          "id_modello" : 0,
+          "nome_modello" : document.getElementById('nome').value,
+          "attributi" : attributi
+        };
+        $.ajax({
+            url: "http://localhost:8080/modello/inserisci",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(obj),
+            dataType: "json"
+        }).done(function (esito) {
+        alert("Esito inserimento: "+esito);
+        });
+    });
+}
+
 function richiedi_modello(){
     $(document).ready(function() {
         var id_modello = document.getElementById("id_modello").value;

@@ -1,27 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript"></script>
-    <script>
-      $( document ).ready(function() {
-        $('#aggiungiUtente').click(function( event ) {
-          var obj = {};
-          obj['username']= document.getElementById('usernameAdd').value;
-          obj['nome']= document.getElementById('nomeAdd').value;
-          obj['cognome']= document.getElementById('cognomeAdd').value;
-          obj['email']= document.getElementById('emailAdd').value;
-          obj['password']= document.getElementById('passAdd').value;
-          $.ajax({
-            url: 'http://localhost:8080/utente/inserisci',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(obj),
-            dataType: 'json'
-          });
-        });
-      });
-    </script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/utente.js"></script>
   </head>
   <body>
     <p>
@@ -50,7 +31,7 @@
     </p>
 
     <p>
-      <button id="aggiungiUtente">Aggiungi</button>
+      <button onclick="inserisci_utente()">Aggiungi</button>
     </p>
   </body>
 </html>

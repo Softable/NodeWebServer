@@ -64,6 +64,10 @@ module.exports = function(app)
       res.render('tabella/modifica.html');
   });
 
+  app.get('/error.html', function(req,res) {
+      res.render('error.html');
+  });
+
   app.get('/tabella', function(req,res) {
       res.render('tabella.html');
   });

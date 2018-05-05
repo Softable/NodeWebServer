@@ -48,3 +48,13 @@ function richiedi_modello(){
         });
     });
 }
+
+function elimina_modello() {
+    $(document).ready(function() {
+        var obj = document.getElementById("id_tabella").value;
+        $.ajax({
+            url: "http://localhost:8080/tabella/elimina" + "/" + obj,
+            type: "GET"
+        });
+    });
+}

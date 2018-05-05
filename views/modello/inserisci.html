@@ -17,29 +17,6 @@
     -->
     <button type="submit" onclick="inserisci_modello()">Aggiungi</button>
 
-    <script>
-        function inserisci_modello() {
-            $(document).ready(function() {
-                var obj = {}, attributi = [];
-
-                for (var i = 0; i < document.getElementsByName('att').length; i++)
-                    attributi[i] = document.getElementsByName('att')[i].value;
-                //IL VALORE DELL'ID_MODELLO è DA SISTEMARE
-                obj = {
-                        "id_modello" : 2,
-                        "nome_modello" : document.getElementById('nome').value,
-                        "attributi" : attributi
-                    };
-                $.ajax({
-                    url: "http://localhost:8080/modello/inserisci",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(obj),
-                    dataType: "json"
-                });
-                document.getElementById("control").innerHTML = "L'inserimento &egrave; avvenuto con successo";
-            });
-        }
-    </script>
+    <script src="/js/modello.js"></script>
 </body>
 </html>
