@@ -1,0 +1,27 @@
+{
+  "name": "nodewebserver",
+  "version": "1.0.0",
+  "description": "The first version of Softable",
+  "main": "router.js",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "node": "^9.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Softable/NodeWebServer.git"
+  },
+  "author": "Alì Haider Maqsood, Alessandro Garau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Softable/NodeWebServer/issues"
+  },
+  "homepage": "https://github.com/Softable/NodeWebServer#readme"
+}

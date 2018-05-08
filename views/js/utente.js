@@ -1,5 +1,5 @@
 function visualizza_utenti(){
-  $( document ).ready(function() {
+  $(document).ready(function() {
     $('#tabella').ready(function( event ) {
       $.get('http://localhost:8080/utente/collezione', function(data) {
         $(function(){
@@ -22,7 +22,7 @@ function visualizza_utenti(){
 }
 
 function richiedi_utente() {
-    $( document ).ready(function() {
+    $(document).ready(function() {
         $('#tabella').ready(function( event ) {
             var obj = "/" + String(document.getElementById('usernameGET').value);
             $.get('http://localhost:8080/utente/richiedi'+obj, function(data) {
@@ -44,27 +44,36 @@ function richiedi_utente() {
 }
 
 function inserisci_utente() {
-  $( document ).ready(function() {
-    var obj = {};
-    obj['username']= document.getElementById('usernameAdd').value;
-    obj['nome']= document.getElementById('nomeAdd').value;
-    obj['cognome']= document.getElementById('cognomeAdd').value;
-    obj['email']= document.getElementById('emailAdd').value;
-    obj['password']= document.getElementById('passAdd').value;
-    $.ajax({
-      url: 'http://localhost:8080/utente/inserisci',
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify(obj),
-      dataType: 'json'
-    }).done(function (esito) {
-      alert("Esito inserimento: "+esito);
-    });
+  $(document).ready(function() {
+
+    var obj = {}, confPassword;
+
+    obj['username'] = document.getElementById('username').value;
+    obj['nome'] = document.getElementById('nome').value;
+    obj['cognome'] = document.getElementById('cognome').value;
+    obj['email'] = document.getElementById('email').value;
+    obj['password'] = document.getElementById('password').value;
+
+    //confPassword = document.getElementById('conf_password');
+
+    //if (confPassword = obj['password']) {
+      $.ajax({
+        url: 'http://localhost:8080/utente/inserisci',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(obj),
+        dataType: 'json'
+      }).done(function (esito) {
+        alert("Esito inserimento: " + esito);
+      });
+    //}
+
+
   });
 }
 
 function modifica_utente() {
-  $( document ).ready(function() {
+  $(document).ready(function() {
     var obj = {};
     obj['username']= document.getElementById('usernameMod').value;
     obj['nome']= document.getElementById('nomeMod').value;
@@ -84,7 +93,7 @@ function modifica_utente() {
 }
 
 function elimina_utente() {
-    $( document ).ready(function() {
+    $(document).ready(function() {
       var obj = "/" + String(document.getElementById('usernameDel').value);
       $.ajax({
       url: 'http://localhost:8080/utente/elimina' + obj,

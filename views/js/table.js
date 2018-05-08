@@ -7,12 +7,12 @@
 		var verTable = $(table1).data('vertable') + "";
 		var column = $(this).data('column') + "";
 
-		var dati = $(this).parent().parent().data();
+		/*var dati = $(this).parent().parent().data();
 		console.log("mouseover: " + verTable);
 		console.log("dati: ");
 		for(var i in dati){
 			console.log(dati[i]);
-		}
+		}*/
 
 		$(table2).find("." + column).addClass('hov-column-' + verTable);
 		$(table1).find(".row100.head ." + column).addClass('hov-column-head-' + verTable);
@@ -25,7 +25,7 @@
 		var verTable = $(table1).data('vertable') + "";
 		var column = $(this).data('column') + "";
 
-		console.log("mouseout: " + verTable);
+		//console.log("mouseout: " + verTable);
 
 		$(table2).find("." + column).removeClass('hov-column-' + verTable);
 		$(table1).find(".row100.head ." + column).removeClass('hov-column-head-' + verTable);
