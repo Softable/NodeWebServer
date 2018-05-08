@@ -1,7 +1,12 @@
 <html>
 <head>
     <title>Modifica</title>
+<<<<<<< HEAD
     <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+=======
+    <script src="/js/jquery.js"></script>
+    <script src="/js/modello.js"></script>
+>>>>>>> 372d8da9e7296c9d68275c3b946cea765308f271
 </head>
 
 <body>
@@ -12,32 +17,5 @@
     <input type="text" name="att" placeholder="Attributo 2" />
     <input type="text" name="att" placeholder="Attributo 3" />
     <button type="submit" onclick="modifica_modello()">Invia</button>
-
-    <script>
-        function modifica_modello() {
-            $(document).ready(function() {
-                var obj = {}, attributi = [];
-
-                for (var i = 0; i < document.getElementsByName('att').length; i++)
-                    attributi[i] = document.getElementsByName('att')[i].value;
-
-                obj = {
-                    "id_modello" : parseInt(document.getElementById("id_modello").value),
-                    "nome_modello" : document.getElementById("nome_modello").value,
-                    "attributi" : attributi
-                };
-
-                $.ajax({
-                    url : "http://localhost:8080/modello/modifica",
-                    type: "PUT",
-                    contentType: "application/json",
-                    data: JSON.stringify(obj),
-                    dataType: "json"
-                });
-
-                document.getElementById("control").innerHTML = "Modifica effettuata";
-            });
-        }
-    </script>
 </body>
 </html>
