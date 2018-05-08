@@ -1,4 +1,4 @@
-function visualizza_collezione() {
+function visualizza_tabelle() {
     $(document).ready(function() {
         $("#tabella").ready(function( event ) {
             $.get("http://localhost:8080/tabella/collezione", function(data) {
@@ -24,7 +24,7 @@ function visualizza_collezione() {
     });
 }
 
-function richiedi_modello(){
+function richiedi_tabella(){
     $(document).ready(function() {
         var id_modello = document.getElementById("id_tabella").value;
         $("#tabella").ready(function( event ) {
@@ -49,7 +49,55 @@ function richiedi_modello(){
     });
 }
 
-function elimina_modello() {
+function inserisci_tabella() {
+    $(document).ready(function() {
+        var obj = {}, dati = [];
+
+        for (var i = 0; i < document.getElementsByName('dati').length; i++)
+            dati[i] = document.getElementsByName('dati')[i].value;
+        obj = {
+          "id_tabella" : 0,
+          "id_modelloTabella" : document.getElementById('modello').value,
+          "tabella" : dati
+        };
+        $.ajax({
+            url: "http://localhost:8080/tabella/inserisci",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(obj),
+            dataType: "json"
+        }).done(function (esito) {
+        alert("Esito inserimento: "+esito);
+        });
+    });
+}
+
+function modifica_tabella() {
+  $(document).ready(function() {
+    var obj = {}, dati = [];
+
+    for (var i = 0; i < document.getElementsByName('att').length; i++)
+        dati[i] = document.getElementsByName('att')[i].value;
+
+    obj = {
+        "id_tabella" : parseInt(document.getElementById("id_tabella").value),
+        "id_modelloTabella" : document.getElementById("id_modelloTabella").value,
+        "tabella" : dati
+    };
+
+    $.ajax({
+        url : "http://localhost:8080/tabella/modifica",
+        type: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(obj),
+        dataType: "json"
+      }).done(function (esito) {
+        alert("Esito modifica: "+esito);
+      });
+  });
+}
+
+function elimina_tabella() {
     $(document).ready(function() {
         var obj = document.getElementById("id_tabella").value;
         $.ajax({
