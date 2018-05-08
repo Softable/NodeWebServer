@@ -26,14 +26,13 @@ function visualizza_tabelle() {
 
 function richiedi_tabella(){
     $(document).ready(function() {
-        var id_modello = document.getElementById("id_tabella").value;
+        var id_tabella = document.getElementById("id_tabella").value;
         $("#tabella").ready(function( event ) {
-            $.get("http://localhost:8080/tabella/richiedi/"+id_modello, function(data) {
+            $.get("http://localhost:8080/tabella/richiedi/"+id_tabella, function(data) {
                 $(function(){
-                    var jsonObj = data;
+                    var value = data;
                     var table = "";
                     table += "<tr>";
-                    table += "<td>" + key + "</td>";
                     table += "<td>" + $(value).attr("id_tabella") + "</td>";
                     table += "<td>" + $(value).attr("username_utente") + "</td>";
                     table += "<td>" + $(value).attr("id_modelloTabella") + "</td>";
@@ -57,6 +56,7 @@ function inserisci_tabella() {
             dati[i] = document.getElementsByName('dati')[i].value;
         obj = {
           "id_tabella" : 0,
+          "username_utente" : document.getElementById('username').value,
           "id_modelloTabella" : document.getElementById('modello').value,
           "tabella" : dati
         };
@@ -76,12 +76,13 @@ function modifica_tabella() {
   $(document).ready(function() {
     var obj = {}, dati = [];
 
-    for (var i = 0; i < document.getElementsByName('att').length; i++)
-        dati[i] = document.getElementsByName('att')[i].value;
+    for (var i = 0; i < document.getElementsByName('dati').length; i++)
+        dati[i] = document.getElementsByName('dati')[i].value;
 
     obj = {
         "id_tabella" : parseInt(document.getElementById("id_tabella").value),
-        "id_modelloTabella" : document.getElementById("id_modelloTabella").value,
+        "username_utente": document.getElementById("username").value,
+        "id_modelloTabella": document.getElementById("id_modelloTabella").value,
         "tabella" : dati
     };
 
@@ -103,6 +104,8 @@ function elimina_tabella() {
         $.ajax({
             url: "http://localhost:8080/tabella/elimina" + "/" + obj,
             type: "GET"
+        }).done(function (esito) {
+          alert("Esito eliminazione: "+esito);
         });
     });
 }
