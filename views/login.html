@@ -135,7 +135,7 @@
 
 <div id="id01" class="modal">
 
-  <form class="modal-content animate" action="/action_page.php">
+  <div class="modal-content animate">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="img/img_avatar2.png" alt="Avatar" class="avatar">
@@ -149,7 +149,7 @@
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Inserisci la tua Password" id="password" required>
 
-        <button type="submit" onclick="accedi_utente(document.getElementById(username), document.getElementById(password))">Entra</button>
+        <button type="submit" onclick="accedi_utente()">Entra</button>
         <label>
             <input type="checkbox" checked="checked" name="remember"> Ricordami
         </label>
@@ -159,7 +159,7 @@
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annulla</button>
       <span class="psw">Hai dimenticato la <a href="#">password?</a></span>
     </div>
-  </form>
+</div>
 </div>
 
 <script>
@@ -172,9 +172,8 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-</script>
 
-<script src="/js/utente.js"></script>
+</script>
 
 </body>
 </html>
