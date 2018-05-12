@@ -33,6 +33,20 @@ function richiedi_utente(username) {
     return utente;
   });
   console.log(utente);
+  /*$.ajax({
+    url: 'http://localhost:8080/utente/richiedi/' + String(username),
+    type: 'GET',
+    async: false,
+    success: function(data) {
+      var jsonObj = data;
+      utente.username = username;
+      utente.nome = jsonObj.nome;//$(jsonObj).attr("nome");
+      utente.cognome = jsonObj.cognome;//$(jsonObj).attr("cognome");
+      utente.email = jsonObj.email;//$(jsonObj).attr("email");
+      utente.password = jsonObj.password;//$(jsonObj).attr("password");
+      console.log(utente);
+    }
+  })*/
   return utente;
 }
 
