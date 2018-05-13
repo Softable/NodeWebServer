@@ -24,34 +24,25 @@ function visualizza_tabelle() {
     });
 }
 
-function richiedi_tabella(){
-    $(document).ready(function() {
-        var id_tabella = document.getElementById("id_tabella").value;
-        $("#tabella").ready(function( event ) {
-            $.get("http://localhost:8080/tabella/richiedi/"+id_tabella, function(data) {
-                $(function(){
-                    var value = data;
-                    var table = "";
-                    table += "<tr>";
-                    table += "<td>" + $(value).attr("id_tabella") + "</td>";
-                    table += "<td>" + $(value).attr("username_utente") + "</td>";
-                    table += "<td>" + $(value).attr("id_modelloTabella") + "</td>";
-                    table += "<td><select>";
-                    for (var i = 0; i < $(value).attr("tabella").length; i++)
-                        table += "<option>" + $(value).attr("tabella")[i] + "</option>";
-                    table += "</select></td>";
-                    table += "</tr>";
-                    document.getElementById("tabella").innerHTML+=table;
-                });
-            });
-        });
-    });
+function richiedi_tabella(id_tabella){
+    var tabella = {};
+    $.ajax({
+        url: 'http://localhost:8080/tabella/richiedi/' + id_tabella,
+        type: 'GET',
+        async: false,
+        success: function(data) {
+            tabella.id_tabella = id_tabella;
+            tabella.username_utente = data.username_utente;
+            tabella.id_modelloTabella = data.id_modelloTabella;
+            tabella.valori = data.tabella;
+        }
+      });
+      return tabella;
 }
 
 function inserisci_tabella() {
     $(document).ready(function() {
         var obj = {}, dati = [];
-
         for (var i = 0; i < document.getElementsByName('dati').length; i++)
             dati[i] = document.getElementsByName('dati')[i].value;
         obj = {
@@ -67,35 +58,32 @@ function inserisci_tabella() {
             data: JSON.stringify(obj),
             dataType: "json"
         }).done(function (esito) {
-        alert("Esito inserimento: "+esito);
+            alert("Esito inserimento: "+esito);
         });
     });
 }
 
 function modifica_tabella() {
-  $(document).ready(function() {
-    var obj = {}, dati = [];
-
-    for (var i = 0; i < document.getElementsByName('dati').length; i++)
-        dati[i] = document.getElementsByName('dati')[i].value;
-
-    obj = {
-        "id_tabella" : parseInt(document.getElementById("id_tabella").value),
-        "username_utente": document.getElementById("username").value,
-        "id_modelloTabella": document.getElementById("id_modelloTabella").value,
-        "tabella" : dati
-    };
-
-    $.ajax({
-        url : "http://localhost:8080/tabella/modifica",
-        type: "PUT",
-        contentType: "application/json",
-        data: JSON.stringify(obj),
-        dataType: "json"
-      }).done(function (esito) {
-        alert("Esito modifica: "+esito);
-      });
-  });
+    $(document).ready(function() {
+        var obj = {}, dati = [];
+        for (var i = 0; i < document.getElementsByName('dati').length; i++)
+            dati[i] = document.getElementsByName('dati')[i].value;
+        obj = {
+            "id_tabella" : parseInt(document.getElementById("id_tabella").value),
+            "username_utente": document.getElementById("username").value,
+            "id_modelloTabella": document.getElementById("id_modelloTabella").value,
+            "tabella" : dati
+        };
+        $.ajax({
+            url : "http://localhost:8080/tabella/modifica",
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify(obj),
+            dataType: "json"
+        }).done(function (esito) {
+            alert("Esito modifica: "+esito);
+        });
+    });
 }
 
 function elimina_tabella() {

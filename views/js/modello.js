@@ -23,8 +23,9 @@ function visualizza_modelli() {
   });
 }
 
-function richiedi_modello(){
-    $(document).ready(function() {
+function richiedi_modello(id_modello){
+
+    /*$(document).ready(function() {
         var id_modello = document.getElementById("id_modello").value;
         $("#tabella").ready(function( event ) {
             $.get("http://localhost:8080/modello/richiedi/"+id_modello, function(data) {
@@ -43,16 +44,28 @@ function richiedi_modello(){
                 });
             });
         });
+    });*/
+
+    var modello = {};
+    $.ajax({
+      url: 'http://localhost:8080/modello/richiedi/' + id_modello,
+      type: 'GET',
+      async: false,
+      success: function(data) {
+        modello.id_modello = id_modello;
+        modello.nome_modello = data.nome_modello;
+        modello.attributi = data.attributi;
+      }
     });
+    return modello;
 }
 
 function inserisci_modello() {
     $(document).ready(function() {
-        var obj = {}, attributi = [];
-
+        var modello = {}, attributi = [];
         for (var i = 0; i < document.getElementsByName('att').length; i++)
             attributi[i] = document.getElementsByName('att')[i].value;
-        obj = {
+        modello = {
           "id_modello" : 0,
           "nome_modello" : document.getElementById('nome').value,
           "attributi" : attributi
@@ -61,32 +74,29 @@ function inserisci_modello() {
             url: "http://localhost:8080/modello/inserisci",
             type: "POST",
             contentType: "application/json",
-            data: JSON.stringify(obj),
+            data: JSON.stringify(modello),
             dataType: "json"
         }).done(function (esito) {
-        alert("Esito inserimento: "+esito);
+            alert("Esito inserimento: "+esito);
         });
     });
 }
 
 function modifica_modello() {
   $(document).ready(function() {
-    var obj = {}, attributi = [];
-
+    var modello = {}, attributi = [];
     for (var i = 0; i < document.getElementsByName('att').length; i++)
         attributi[i] = document.getElementsByName('att')[i].value;
-
-    obj = {
+    modello = {
         "id_modello" : parseInt(document.getElementById("id_modello").value),
         "nome_modello" : document.getElementById("nome_modello").value,
         "attributi" : attributi
     };
-
     $.ajax({
         url : "http://localhost:8080/modello/modifica",
         type: "PUT",
         contentType: "application/json",
-        data: JSON.stringify(obj),
+        data: JSON.stringify(modello),
         dataType: "json"
       }).done(function (esito) {
         alert("Esito modifica: "+esito);
@@ -96,9 +106,9 @@ function modifica_modello() {
 
 function elimina_modello() {
   $(document).ready(function() {
-    var obj = document.getElementById("id_modello").value;
+    var id_modello = document.getElementById("id_modello").value;
     $.ajax({
-        url: "http://localhost:8080/modello/elimina" + "/" + obj,
+        url: "http://localhost:8080/modello/elimina" + "/" + id_modello,
         type: "GET"
       }).done(function (esito) {
         alert("Esito eliminazione: "+esito);

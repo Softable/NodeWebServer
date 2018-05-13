@@ -23,52 +23,36 @@ function visualizza_utenti(){
 
 function richiedi_utente(username) {
   var utente = {};
-  $.get('http://localhost:8080/utente/richiedi/' + String(username), function(data) {
-    var jsonObj = data;
-    utente.username = username;
-    utente.nome = $(jsonObj).attr("nome");
-    utente.cognome = $(jsonObj).attr("cognome");
-    utente.email = $(jsonObj).attr("email");
-    utente.password = $(jsonObj).attr("password");
-    return utente;
-  });
-  console.log(utente);
-  /*$.ajax({
+  $.ajax({
     url: 'http://localhost:8080/utente/richiedi/' + String(username),
     type: 'GET',
     async: false,
     success: function(data) {
-      var jsonObj = data;
       utente.username = username;
-      utente.nome = jsonObj.nome;//$(jsonObj).attr("nome");
-      utente.cognome = jsonObj.cognome;//$(jsonObj).attr("cognome");
-      utente.email = jsonObj.email;//$(jsonObj).attr("email");
-      utente.password = jsonObj.password;//$(jsonObj).attr("password");
-      console.log(utente);
+      utente.nome = data.nome;
+      utente.cognome = data.cognome;
+      utente.email = data.email;
+      utente.password = data.password;
     }
-  })*/
+  });
   return utente;
 }
 
 function inserisci_utente() {
   $(document).ready(function() {
-
-    var obj = {}, confPassword;
-
-    obj['username'] = document.getElementById('username').value;
-    obj['nome'] = document.getElementById('nome').value;
-    obj['cognome'] = document.getElementById('cognome').value;
-    obj['email'] = document.getElementById('email').value;
-    obj['password'] = document.getElementById('password').value;
-
+    var utente = {}, confPassword;
+    utente.username = document.getElementById('username').value;
+    utente.nome = document.getElementById('nome').value;
+    utente.cognome = document.getElementById('cognome').value;
+    utente.email = document.getElementById('email').value;
+    utente.password = document.getElementById('password').value;
     confPassword = document.getElementById('conf_password').value;
-
-    if (confPassword == obj['password']) {
+    if (confPassword == utente.password) {
       $.ajax({
         url: 'http://localhost:8080/utente/inserisci',
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(obj),
+        data: JSON.stringify(utente),
         dataType: 'json'
       }).done(function (esito) {
         if (esito)
@@ -78,8 +62,6 @@ function inserisci_utente() {
       });
     } else
       window.location.replace("/error2");
-
-
   });
 }
 
@@ -98,7 +80,7 @@ function modifica_utente() {
         data: JSON.stringify(obj),
         dataType: 'json'
     }).done(function (esito) {
-      alert("Esito modifica: "+esito);
+      alert("Esito modifica: "+ esito);
     });
   });
 }
@@ -110,7 +92,7 @@ function elimina_utente() {
       url: 'http://localhost:8080/utente/elimina' + obj,
       type: 'GET',
       }).done(function (esito) {
-        alert("Esito eliminazione: "+esito);
+        alert("Esito eliminazione: " + esito);
       });
     });
 }
@@ -125,8 +107,8 @@ function accedi_utente() {
   console.log(utente);
 
   if (utente['password'] == password)
-     window.location.replace("/tabella");
-  //else
-    //  window.location.replace("/error");
+    window.location.replace("/tabella");
+  else
+    window.location.replace("/error");
 
 }
