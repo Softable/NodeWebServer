@@ -1,49 +1,73 @@
-<!DOCTYPE html>
 <html>
+
+  <style>
+    #logo {
+      height: 10px;
+      width: 10px;
+    }
+  </style>
+
   <head>
-    <style>
-      table, th, td {
-        border: 1px solid black;
-      }
-    </style>
-    <script language="javascript" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-      function visualizza(){
-        $( document ).ready(function() {
-          $('#tabella').ready(function( event ) {
-            $.get('http://localhost:8080/utente/collezione', function(data) {
-              $(function(){
-                var jsonObj = data;
-                var html = '';
-                $.each(jsonObj, function(key, value){
-                  html += '<tr>';
-                  html += '<td>' + key + '</td>';
-                  html += '<td>' + $(value).attr("nome") + '</td>';
-                  html += '<td>' + $(value).attr("cognome") + '</td>';
-                  html += '<td>' + $(value).attr("email") + '</td>';
-                  html += '<td>' + $(value).attr("password") + '</td>';
-                  html += '</tr>';
-                });
-                $('#tabella').append(html);
-              });
-            });
-          });
-        });
-      }
-    </script>
+    <title>Home</title>
+    <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
   </head>
-  <body onload="visualizza()">
-    <table style="border:'1';" id="tabella">
-      <thead>
-        <tr>
-          <th>username</th>
-          <th>nome</th>
-          <th>cognome</th>
-          <th>email</th>
-          <th>password</th>
-        </tr>
-      </thead>
-    </table>
+
+  <body class="homepage">
+    <div id="page-wrapper">
+
+      <div id="header">
+
+        <div class="inner">
+          <header>
+            <h1><a href="index.html" id="logo">Helios</a></h1>
+            <hr />
+            <p>Another fine freebie by HTML5 UP</p>
+          </header>
+          <footer>
+            <a href="#banner" class="button circled scrolly">Start</a>
+          </footer>
+        </div>
+
+        <nav id="nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>
+              <a href="#">Dropdown</a>
+              <ul>
+                <li><a href="#">Lorem ipsum dolor</a></li>
+                <li><a href="#">Magna phasellus</a></li>
+                <li><a href="#">Etiam dolore nisl</a></li>
+                <li>
+                  <a href="#">And a submenu &hellip;</a>
+                  <ul>
+                    <li><a href="#">Lorem ipsum dolor</a></li>
+                    <li><a href="#">Phasellus consequat</a></li>
+                    <li><a href="#">Magna phasellus</a></li>
+                    <li><a href="#">Etiam dolore nisl</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Veroeros feugiat</a></li>
+              </ul>
+            </li>
+            <li id="logo"><a href="index.html">aaaaaaaaaaaaaaaaaaaaaaaaaaaa<!--img src="assets/images/logo.png"--></a></li>
+            <li><a href="right-sidebar.html">Right Sidebar</a></li>
+            <li><a href="no-sidebar.html">No Sidebar</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.onvisible.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
   </body>
 </html>
