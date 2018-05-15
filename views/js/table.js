@@ -1,12 +1,29 @@
 function visualizza_tabella(id){
 	var tabella=richiedi_tabella(id);
+	var quantita_dati=tabella.valori.length;
 	var id_modello=tabella.id_modelloTabella;
 	var modello=richiedi_modello(id_modello);
 	var colonne=modello.attributi.length;
 	for(var i=0 ; i<colonne ; i++){
     document.getElementById('attributi').innerHTML+="<th class='column100 column"+(i+1)+"' data-column='column"+(i+1)+"'>"+modello.attributi[i]+"</th>";
-
 	}
+
+
+		var tableRef = document.getElementById('tabella').getElementsByTagName('tbody')[0];
+
+		// Insert a row in the table at the last row
+		var newRow   = tableRef.insertRow(tableRef.rows.length);
+
+		// Insert a cell in the row at index i
+		var newCell  = newRow.insertCell(0);
+var newCell1  = newRow.insertCell(1);
+		// Append a text node to the cell
+		var newText  = tabella.valori[1];
+		var newText1  =tabella.valori[2];
+		newCell.innerHTML+=(newText);
+	newCell1.innerHTML+=(newText1);
+	jQuery("tr").addClass("row100");
+
 }
 
 function richiedi_tabella(id_tabella){
