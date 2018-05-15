@@ -1,3 +1,49 @@
+function visualizza_tabella(id){
+	var tabella=richiedi_tabella(id);
+	var id_modello=tabella.id_modelloTabella;
+	var modello=richiedi_modello(id_modello);
+	var colonne=modello.attributi.length;
+	for(var i=0 ; i<colonne ; i++){
+    document.getElementById('attributi').innerHTML+="<th class='column100 column"+(i+1)+"' data-column='column"+(i+1)+"'>"+modello.attributi[i]+"</th>";
+
+	}
+}
+
+function richiedi_tabella(id_tabella){
+    var tabella = {};
+    $.ajax({
+        url: 'http://localhost:8080/tabella/richiedi/' + id_tabella,
+        type: 'GET',
+        async: false,
+        success: function(data) {
+            tabella.id_tabella = id_tabella;
+            tabella.username_utente = data.username_utente;
+            tabella.id_modelloTabella = data.id_modelloTabella;
+            tabella.valori = data.tabella;
+        }
+      });
+      return tabella;
+}
+
+function richiedi_modello(id_modello){
+    var modello = {};
+    $.ajax({
+      url: 'http://localhost:8080/modello/richiedi/' + id_modello,
+      type: 'GET',
+      async: false,
+      success: function(data) {
+        modello.id_modello = id_modello;
+        modello.nome_modello = data.nome_modello;
+        modello.attributi = data.attributi;
+      }
+    });
+    return modello;
+}
+
+function change_color(version) {
+		document.getElementById("div_table").className= "table100 ver" + version + " m-b-110";
+		document.getElementsByTagName("table")[0].setAttribute("data-vertable", "ver" + version);
+}
 
 (function ($) {
 	"use strict";
@@ -32,4 +78,4 @@
 	});
 
 
-})(jQuery);
+});
