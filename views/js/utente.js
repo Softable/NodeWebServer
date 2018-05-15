@@ -1,24 +1,15 @@
 function visualizza_utenti(){
-  $(document).ready(function() {
-    $('#tabella').ready(function( event ) {
-      $.get('http://localhost:8080/utente/collezione', function(data) {
-        $(function(){
-          var jsonObj = data;
-          var html = '';
-          $.each(jsonObj, function(key, value){
-            html += '<tr>';
-            html += '<td>' + key + '</td>';
-            html += '<td>' + $(value).attr("nome") + '</td>';
-            html += '<td>' + $(value).attr("cognome") + '</td>';
-            html += '<td>' + $(value).attr("email") + '</td>';
-            html += '<td>' + $(value).attr("password") + '</td>';
-            html += '</tr>';
-          });
-          $('#tabella').append(html);
-        });
+  var utenti = [];
+  $.ajax({
+    url: 'http://localhost:8080/utente/collezione',
+    type: 'GET',
+    async: false,
+    success: function(data) {
+      data.forEach(function(utente) {
+        utenti.push(utente);
       });
-    });
   });
+  return utenti;
 }
 
 function richiedi_utente(username) {
