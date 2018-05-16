@@ -4,26 +4,20 @@ function visualizza_tabella(id){
 	var id_modello=tabella.id_modelloTabella;
 	var modello=richiedi_modello(id_modello);
 	var colonne=modello.attributi.length;
+	var tabellaHTML = document.getElementById('tabella').getElementsByTagName('tbody')[0];
 	for(var i=0 ; i<colonne ; i++){
     document.getElementById('attributi').innerHTML+="<th class='column100 column"+(i+1)+"' data-column='column"+(i+1)+"'>"+modello.attributi[i]+"</th>";
 	}
-
-
-		var tableRef = document.getElementById('tabella').getElementsByTagName('tbody')[0];
-
-		// Insert a row in the table at the last row
-		var newRow   = tableRef.insertRow(tableRef.rows.length);
-
-		// Insert a cell in the row at index i
-		var newCell  = newRow.insertCell(0);
-var newCell1  = newRow.insertCell(1);
-		// Append a text node to the cell
-		var newText  = tabella.valori[1];
-		var newText1  =tabella.valori[2];
-		newCell.innerHTML+=(newText);
-	newCell1.innerHTML+=(newText1);
+	for(var i=0 ; i<quantita_dati ; i++){
+		if(i%colonne==0){
+			var riga = tabellaHTML.insertRow(tabellaHTML.rows.length);
+		}
+		var cella = riga.insertCell(i%3);
+		var dato  = tabella.valori[i];
+		cella.innerHTML+=(dato);
+	}
 	jQuery("tr").addClass("row100");
-
+	jQuery("td").addClass("column100");
 }
 
 function richiedi_tabella(id_tabella){
@@ -69,14 +63,7 @@ function change_color(version) {
 		var table2 = $(this).parent().parent();
 		var verTable = $(table1).data('vertable') + "";
 		var column = $(this).data('column') + "";
-
-		/*var dati = $(this).parent().parent().data();
-		console.log("mouseover: " + verTable);
-		console.log("dati: ");
-		for(var i in dati){
-			console.log(dati[i]);
-		}*/
-
+		
 		$(table2).find("." + column).addClass('hov-column-' + verTable);
 		$(table1).find(".row100.head ." + column).addClass('hov-column-head-' + verTable);
 	});

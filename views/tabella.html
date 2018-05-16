@@ -1,54 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Tabella</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+      <title>Tabella</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="js/table.js"></script>
-  	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-  	<script src="vendor/bootstrap/js/popper.js"></script>
-  	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  	<script src="vendor/select2/select2.min.js"></script>
+      <script src="js/table.js"></script>
+    	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    	<script src="vendor/bootstrap/js/popper.js"></script>
+    	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    	<script src="vendor/select2/select2.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/ie8.css">
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-</head>
-<body onload="visualizza_tabella(2)">
-
-<div class="limiter">
-    <div class="container-table100">
-        <div class="wrap-table100">
-            <div class="table100 ver1 m-b-110" id="div_table">
-                <table data-vertable="ver1" id="tabella" >
-                    <thead>
-                        <tr class="row100 head" id="attributi"></tr>
-                    </thead>
-                    <tbody id="dati">
-                      
-                    </tbody>
-                </table>
+      <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/ie8.css">
+      <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+      <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+      <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+      <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+  </head>
+  <body onload="visualizza_tabella(2)">
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver1 m-b-110" id="div_table">
+                    <table data-vertable="ver1" id="tabella" >
+                        <thead>
+                            <tr class="row100 head" id="attributi"></tr>
+                        </thead>
+                        <tbody id="dati"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<button type="submit" onclick="change_color(1)">Colore 1</button><br>
-<button type="submit" onclick="change_color(2)">Colore 2</button><br>
-<button type="submit" onclick="change_color(3)">Colore 3</button><br>
-<button type="submit" onclick="change_color(4)">Colore 4</button><br>
-<button type="submit" onclick="change_color(5)">Colore 5</button><br>
-<button type="submit" onclick="change_color(6)">Colore 6</button><br>
-
-
-
-
-</body>
+  </body>
 </html>
