@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+=======
+function visualizza_tabelle() {
+  var tabelle = [];
+  $.ajax({
+    url: 'http://localhost:8080/tabella/collezione',
+    type: 'GET',
+    async: false,
+    success: function(data) {
+      data.forEach(
+		  function(tabella) {
+        	tabelle.push(tabella);
+      	  }
+	  );
+	}
+  });
+  return tabelle;
+}
+
+>>>>>>> ed1fcc7f03b04e09a8dd4e560700d367f569165d
 function richiedi_tabella(id_tabella){
     var tabella = {};
     $.ajax({
@@ -17,8 +37,9 @@ function richiedi_tabella(id_tabella){
 function inserisci_tabella() {
     $(document).ready(function() {
         var obj = {}, dati = [];
-        for (var i = 0; i < document.getElementsByName('dati').length; i++)
+        for (var i = 0; i < document.getElementsByName('dati').length; i++) {
             dati[i] = document.getElementsByName('dati')[i].value;
+		}
         obj = {
           "id_tabella" : 0,
           "username_utente" : document.getElementById('username').value,
@@ -40,8 +61,9 @@ function inserisci_tabella() {
 function modifica_tabella() {
     $(document).ready(function() {
         var obj = {}, dati = [];
-        for (var i = 0; i < document.getElementsByName('dati').length; i++)
+        for (var i = 0; i < document.getElementsByName('dati').length; i++) {
             dati[i] = document.getElementsByName('dati')[i].value;
+		}
         obj = {
             "id_tabella" : parseInt(document.getElementById("id_tabella").value),
             "username_utente": document.getElementById("username").value,
