@@ -5,9 +5,12 @@ function ottieni_modelli() {
     type: 'GET',
     async: false,
     success: function(data) {
-      data.forEach(function(modello) {
-        modelli.push(modello);
-      });
+      data.forEach(
+		  function(modello) {
+        	modelli.push(modello);
+		  }
+      );
+	}
   });
   return modelli;
 }
@@ -30,8 +33,9 @@ function richiedi_modello(id_modello){
 function inserisci_modello() {
     $(document).ready(function() {
         var modello = {}, attributi = [];
-        for (var i = 0; i < document.getElementsByName('att').length; i++)
+        for (var i = 0; i < document.getElementsByName('att').length; i++) {
             attributi[i] = document.getElementsByName('att')[i].value;
+		}
         modello = {
           "id_modello" : 0,
           "nome_modello" : document.getElementById('nome').value,
@@ -52,8 +56,9 @@ function inserisci_modello() {
 function modifica_modello() {
   $(document).ready(function() {
     var modello = {}, attributi = [];
-    for (var i = 0; i < document.getElementsByName('att').length; i++)
+    for (var i = 0; i < document.getElementsByName('att').length; i++) {
         attributi[i] = document.getElementsByName('att')[i].value;
+	}
     modello = {
         "id_modello" : parseInt(document.getElementById("id_modello").value),
         "nome_modello" : document.getElementById("nome_modello").value,
