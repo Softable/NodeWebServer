@@ -1,17 +1,3 @@
-function visualizza_tabelle() {
-  var tabelle = [];
-  $.ajax({
-    url: 'http://localhost:8080/tabella/collezione',
-    type: 'GET',
-    async: false,
-    success: function(data) {
-      data.forEach(function(tabella) {
-        tabelle.push(tabella);
-      });
-  });
-  return tabelle;
-}
-
 function richiedi_tabella(id_tabella){
     var tabella = {};
     $.ajax({

@@ -1,4 +1,4 @@
-function visualizza_modelli() {
+function ottieni_modelli() {
   var modelli = [];
   $.ajax({
     url: 'http://localhost:8080/modelli/collezione',

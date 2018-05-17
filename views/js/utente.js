@@ -1,17 +1,3 @@
-function visualizza_utenti(){
-  var utenti = [];
-  $.ajax({
-    url: 'http://localhost:8080/utente/collezione',
-    type: 'GET',
-    async: false,
-    success: function(data) {
-      data.forEach(function(utente) {
-        utenti.push(utente);
-      });
-  });
-  return utenti;
-}
-
 function richiedi_utente(username) {
   var utente = {};
   $.ajax({
