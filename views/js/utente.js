@@ -5,9 +5,12 @@ function visualizza_utenti(){
     type: 'GET',
     async: false,
     success: function(data) {
-      data.forEach(function(utente) {
-        utenti.push(utente);
-      });
+      data.forEach(
+		function(utente) {
+			utenti.push(utente);
+		}
+	  );
+	}
   });
   return utenti;
 }
@@ -32,11 +35,11 @@ function richiedi_utente(username) {
 function inserisci_utente() {
   $(document).ready(function() {
     var utente = {}, confPassword;
-    utente.username = document.getElementById('username').value;
+    utente.username = document.getElementById('reg_username').value;
     utente.nome = document.getElementById('nome').value;
     utente.cognome = document.getElementById('cognome').value;
     utente.email = document.getElementById('email').value;
-    utente.password = document.getElementById('password').value;
+    utente.password = document.getElementById('reg_password').value;
     confPassword = document.getElementById('conf_password').value;
     if (confPassword == utente.password) {
       $.ajax({
@@ -46,24 +49,26 @@ function inserisci_utente() {
         data: JSON.stringify(utente),
         dataType: 'json'
       }).done(function (esito) {
-        if (esito)
+        if (esito) {
           window.location.replace("/tabella");
-        else
+		} else {
           window.location.replace("/error1");
+		}
       });
-    } else
+    } else {
       window.location.replace("/error2");
+	}
   });
 }
 
 function modifica_utente() {
   $(document).ready(function() {
     var obj = {};
-    obj['username']= document.getElementById('usernameMod').value;
-    obj['nome']= document.getElementById('nomeMod').value;
-    obj['cognome']= document.getElementById('cognomeMod').value;
-    obj['email']= document.getElementById('emailMod').value;
-    obj['password']= document.getElementById('passMod').value;
+    obj.username = document.getElementById('usernameMod').value;
+    obj.nome = document.getElementById('nomeMod').value;
+    obj.cognome = document.getElementById('cognomeMod').value;
+    obj.email = document.getElementById('emailMod').value;
+    obj.password = document.getElementById('passMod').value;
     $.ajax({
         url: 'http://localhost:8080/utente/modifica',
         type: 'PUT',
@@ -97,9 +102,9 @@ function accedi_utente() {
   utente = richiedi_utente(username);
   console.log(utente);
 
-  if (utente['password'] == password)
+  if (utente.password == password) {
     window.location.replace("/tabella");
-  else
+  } else {
     window.location.replace("/error");
-
+  }
 }

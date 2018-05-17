@@ -5,9 +5,12 @@ function visualizza_tabelle() {
     type: 'GET',
     async: false,
     success: function(data) {
-      data.forEach(function(tabella) {
-        tabelle.push(tabella);
-      });
+      data.forEach(
+		  function(tabella) {
+        	tabelle.push(tabella);
+      	  }
+	  );
+	}
   });
   return tabelle;
 }
@@ -31,8 +34,9 @@ function richiedi_tabella(id_tabella){
 function inserisci_tabella() {
     $(document).ready(function() {
         var obj = {}, dati = [];
-        for (var i = 0; i < document.getElementsByName('dati').length; i++)
+        for (var i = 0; i < document.getElementsByName('dati').length; i++) {
             dati[i] = document.getElementsByName('dati')[i].value;
+		}
         obj = {
           "id_tabella" : 0,
           "username_utente" : document.getElementById('username').value,
@@ -54,8 +58,9 @@ function inserisci_tabella() {
 function modifica_tabella() {
     $(document).ready(function() {
         var obj = {}, dati = [];
-        for (var i = 0; i < document.getElementsByName('dati').length; i++)
+        for (var i = 0; i < document.getElementsByName('dati').length; i++) {
             dati[i] = document.getElementsByName('dati')[i].value;
+		}
         obj = {
             "id_tabella" : parseInt(document.getElementById("id_tabella").value),
             "username_utente": document.getElementById("username").value,

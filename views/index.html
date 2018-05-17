@@ -3,6 +3,7 @@
 <head>
 
     <style>
+		/*  */
         #logo_softable {
 			position: relative;
 			top: 36px;
@@ -12,8 +13,128 @@
 			padding: 0 0 0 0;
         }
 		
-		#accedi > a.active {
-			border-color: rgba(192, 192, 192, 0.35);
+		/* Full-width input fields */
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		
+		/* Add a background color when the inputs get focus */
+		input[type=text]:focus, input[type=password]:focus {
+			background-color: #ddd;
+			outline: none;
+		}
+		
+		/* Set a style for all buttons */
+		button {
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+		}
+
+		button:hover {
+			opacity: 0.8;
+		}
+		
+		/* Extra styles for the cancel button */
+		.cancelbtn {
+			width: auto;
+			padding: 10px 18px;
+			background-color: #f44336;
+		}
+
+		/* Center the image and position the close button */
+		.imgcontainer {
+			text-align: center;
+			margin: 24px 0 12px 0;
+			position: relative;
+		}
+
+		img.avatar {
+			width: 40%;
+			border-radius: 50%;
+		}
+
+		.container {
+			padding: 16px;
+		}
+
+		span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+
+		/* The Modal (background) */
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			padding-top: 60px;
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+			background-color: #fefefe;
+			margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+			border: 1px solid #888;
+			width: 80%; /* Could be more or less, depending on screen size */
+		}
+
+		/* The Close Button (x) */
+		.close {
+			position: absolute;
+			right: 25px;
+			top: 0;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: red;
+			cursor: pointer;
+		}
+
+		/* Add Zoom Animation */
+		.animate {
+			-webkit-animation: animatezoom 0.6s;
+			animation: animatezoom 0.6s
+		}
+
+		@-webkit-keyframes animatezoom {
+			from {-webkit-transform: scale(0)}
+			to {-webkit-transform: scale(1)}
+		}
+
+		@keyframes animatezoom {
+			from {transform: scale(0)}
+			to {transform: scale(1)}
+		}
+
+		/* Change styles for span and cancel button on extra small screens */
+		@media screen and (max-width: 300px) {
+			span.psw {
+			display: block;
+			float: none;
+			}
+			.cancelbtn {
+			width: 100%;
+			}
 		}
     </style>
 
@@ -30,24 +151,25 @@
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="js/utente.js"></script>
 </head>
 
 <body class="homepage">
-    <div id="page-wrapper">
-
-      <div id="header">
-
-            <div class="inner">
-                <header>
-                    <h1><a href="index.html" id="logo">Helios</a></h1>
-                    <hr />
-                    <p>Another fine freebie by HTML5 UP</p>
-                </header>
-                <footer>
-                    <a href="#banner" class="button circled scrolly">Start</a>
-                </footer>
-            </div>
-
+	<!-- DIV DELLA HOME  -->
+	<div id="page-wrapper">
+		<div id="header">
+			<div class="inner">
+				<header>
+					<h1><a href="index.html" id="logo">Helios</a></h1>
+					<hr />
+					<p>Another fine freebie by HTML5 UP</p>
+				</header>
+				<footer>
+					<a href="#banner" class="button circled scrolly">Start</a>
+				</footer>
+			</div>
+			
+			<!-- BARRA DI NAVIGAZIONE -->
             <nav id="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -70,19 +192,18 @@
                         </ul>
                     </li>
                     <li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
-                    <li class="opener" style="-moz-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;">
-						<a id="accedi" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Accedi</a>
-					</li>
-                    <li><a href="/login">Registrati</a></li>
+                    <li><a href="#" onclick="document.getElementById('login_div').style.display='block'" style="width:auto;">Accedi</a></li>
+                    <li><a href="#" onclick="document.getElementById('register_div').style.display='block'" style="width:auto;">Registrati</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 	
-	<div id="id01" class="modal">
+	<!-- DIV DEL LOGIN A COMPARSA -->
+	<div id="login_div" class="modal">
 		<div class="modal-content animate">
 			<div class="imgcontainer">
-				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<span onclick="document.getElementById('login_div').style.display='none'" class="close" title="Close Modal">&times;</span>
 				<img src="img/img_avatar2.png" alt="Avatar" class="avatar">
 			</div>
 
@@ -101,11 +222,63 @@
 			</div>
 
 			<div class="container" style="background-color:#f1f1f1">
-				<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annulla</button>
+				<button type="button" onclick="document.getElementById('login_div').style.display='none'" class="cancelbtn">Annulla</button>
 				<span class="psw">Hai dimenticato la <a href="#">password?</a></span>
 			</div>
 		</div>
 	</div>
+	
+	<!-- DIV A COMPARSA DELLA REGISTRAZIONE -->
+	<div id="register_div" class="modal">
+		<span onclick="document.getElementById('register_div').style.display='none'" class="close" title="Close Modal">&times;</span>
+		<div class="modal-content">
+			<div class="container">
+				<h1>Registrati</h1>
+				<p>Compila questo modulo per creare il tuo account.</p>
+				<hr>
+				<label><b>Nome</b></label>
+				<input type="text" placeholder="Inserisci il tuo nome" id="nome" required>
 
+				<label><b>Cognome</b></label>
+				<input type="text" placeholder="Inserisci il tuo cognome" id="cognome" required>
+
+				<label><b>Email</b></label>
+				<input type="text" placeholder="inserisci la tua Email" id="email" required>
+
+				<label><b>Username</b></label>
+				<input type="text" placeholder="Inserisci il tuo Username" id="reg_username" required>
+
+				<label><b>Password</b></label>
+				<input type="password" placeholder="Inserisci la tua Password" id="reg_password" required>
+
+				<label><b>Conferma la tua password</b></label>
+				<input type="password" placeholder="Conferma la tua Password" id="conf_password" required>
+
+				<label>
+				<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Ricordami
+				</label>
+
+				<div class="clearfix">
+					<button type="button" onclick="document.getElementById('register_div').style.display='none'" class="cancelbtn">Annulla</button>
+					<button type="submit" id="signupbtn" class="signupbtn" onclick="inserisci_utente()">Entra</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// Get the modal
+		var modal_login = document.getElementById('login_div');
+		var modal_register = document.getElementById('register_div');
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal_login) {
+				modal_login.style.display = "none";
+			} else if (event.target == modal_register) {
+				modal_register.style.display = "none";
+			}
+		}
+	</script>
+	
 </body>
 </html>
