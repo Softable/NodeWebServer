@@ -12,9 +12,8 @@
 			padding: 0 0 0 0;
         }
 		
-		#li_logo {
-			padding: 0;
-			margin: 0;
+		#accedi > a.active {
+			border-color: rgba(192, 192, 192, 0.35);
 		}
     </style>
 
@@ -53,7 +52,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li>
-                        <a href="#">Dropdown</a>
+                        <a href="#">Tabelle</a>
                         <ul>
                             <li><a href="#">Lorem ipsum dolor</a></li>
                             <li><a href="#">Magna phasellus</a></li>
@@ -71,14 +70,42 @@
                         </ul>
                     </li>
                     <li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
-                    <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                    <li><a href="no-sidebar.html">No Sidebar</a></li>
+                    <li class="opener" style="-moz-user-select: none; cursor: pointer; white-space: nowrap; opacity: 1;">
+						<a id="accedi" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Accedi</a>
+					</li>
+                    <li><a href="/login">Registrati</a></li>
                 </ul>
             </nav>
-
         </div>
-
     </div>
+	
+	<div id="id01" class="modal">
+		<div class="modal-content animate">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img src="img/img_avatar2.png" alt="Avatar" class="avatar">
+			</div>
+
+			<div class="container">
+
+				<label for="username"><b>Username</b></label>
+				<input type="text" placeholder="Inserisci il tuo Username" id="username" required>
+
+				<label for="password"><b>Password</b></label>
+				<input type="password" placeholder="Inserisci la tua Password" id="password" required>
+
+				<button type="submit" onclick="accedi_utente()">Entra</button>
+				<label>
+				<input type="checkbox" checked="checked" name="remember"> Ricordami
+				</label>
+			</div>
+
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annulla</button>
+				<span class="psw">Hai dimenticato la <a href="#">password?</a></span>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
