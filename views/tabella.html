@@ -21,20 +21,17 @@
       <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
       <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
   </head>
-  <body onload="visualizza_tabella(2)">
+  <body>
     <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100 ver1 m-b-110" id="div_table">
-                    <table data-vertable="ver1" id="tabella" >
-                        <thead>
-                            <tr class="row100 head" id="attributi"></tr>
-                        </thead>
-                        <tbody id="dati"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+      <form align=center>
+        Tabella richiesta:<input type="text" id="id_tabella" style="size:10%;">
+        <input type="button" onclick="inserisci_tabella(id_tabella.value)" value="Aggiungi">
+      </form>
+      <div class="container-table100">
+          <div class="wrap-table100">
+              <div class="table100 ver1 m-b-110" id="div_table"></div>
+          </div>
+      </div>
     </div>
   </body>
 </html>
