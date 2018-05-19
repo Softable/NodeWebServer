@@ -15,11 +15,12 @@
 		
 		/* Full-width input fields */
 		input[type=text], input[type=password] {
-			width: 100%;
+			width: 60%;
 			padding: 12px 20px;
 			margin: 8px 0;
 			display: inline-block;
 			border: 1px solid #ccc;
+			border-radius: 10px;
 			box-sizing: border-box;
 		}
 		
@@ -43,8 +44,14 @@
 			opacity: 0.8;
 		}
 		
+		#signupbtn {
+			position: relative;
+			width: 80%;
+		}
+		
 		/* Extra styles for the cancel button */
 		.cancelbtn {
+			position: relative;
 			width: auto;
 			padding: 10px 18px;
 			background-color: #f44336;
@@ -61,7 +68,7 @@
 			width: 40%;
 			border-radius: 50%;
 		}
-
+		
 		.container {
 			padding: 16px;
 		}
@@ -88,10 +95,11 @@
 
 		/* Modal Content/Box */
 		.modal-content {
-			background-color: #fefefe;
+			background-color: #fff;
 			margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-			border: 1px solid #888;
-			width: 80%; /* Could be more or less, depending on screen size */
+			/*border: 1px solid #888;*/
+			border-radius: 10px;
+			width: 50%; /* Could be more or less, depending on screen size */
 		}
 
 		/* The Close Button (x) */
@@ -203,8 +211,7 @@
 	<div id="login_div" class="modal">
 		<div class="modal-content animate">
 			<div class="imgcontainer">
-				<span onclick="document.getElementById('login_div').style.display='none'" class="close" title="Close Modal">&times;</span>
-				<img src="img/img_avatar2.png" alt="Avatar" class="avatar">
+				<img src="assets/images/account.png" alt="Avatar" class="avatar">
 			</div>
 
 			<div class="container">
@@ -216,9 +223,6 @@
 				<input type="password" placeholder="Inserisci la tua Password" id="password" required>
 
 				<button type="submit" onclick="accedi_utente()">Entra</button>
-				<label>
-				<input type="checkbox" checked="checked" name="remember"> Ricordami
-				</label>
 			</div>
 
 			<div class="container" style="background-color:#f1f1f1">
@@ -230,20 +234,21 @@
 	
 	<!-- DIV A COMPARSA DELLA REGISTRAZIONE -->
 	<div id="register_div" class="modal">
-		<span onclick="document.getElementById('register_div').style.display='none'" class="close" title="Close Modal">&times;</span>
+		
 		<div class="modal-content">
 			<div class="container">
 				<h1>Registrati</h1>
 				<p>Compila questo modulo per creare il tuo account.</p>
 				<hr>
+				
+				<label><b>Email</b></label>
+				<input type="text" placeholder="inserisci la tua Email" id="email" required>
+				
 				<label><b>Nome</b></label>
 				<input type="text" placeholder="Inserisci il tuo nome" id="nome" required>
 
 				<label><b>Cognome</b></label>
 				<input type="text" placeholder="Inserisci il tuo cognome" id="cognome" required>
-
-				<label><b>Email</b></label>
-				<input type="text" placeholder="inserisci la tua Email" id="email" required>
 
 				<label><b>Username</b></label>
 				<input type="text" placeholder="Inserisci il tuo Username" id="reg_username" required>
@@ -253,10 +258,6 @@
 
 				<label><b>Conferma la tua password</b></label>
 				<input type="password" placeholder="Conferma la tua Password" id="conf_password" required>
-
-				<label>
-				<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Ricordami
-				</label>
 
 				<div class="clearfix">
 					<button type="button" onclick="document.getElementById('register_div').style.display='none'" class="cancelbtn">Annulla</button>
