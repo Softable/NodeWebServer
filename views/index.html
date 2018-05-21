@@ -12,7 +12,7 @@
 			margin: 0 0 0 0;
 			padding: 0 0 0 0;
         }
-		
+
 		/* Full-width input fields */
 		input[type=text], input[type=password] {
 			width: 100%;
@@ -23,13 +23,13 @@
 			border-radius: 10px;
 			box-sizing: border-box;
 		}
-		
+
 		/* Add a background color when the inputs get focus */
 		input[type=text]:focus, input[type=password]:focus {
 			background-color: #ddd;
 			outline: none;
 		}
-		
+
 		/* Set a style for all buttons */
 		button {
 			color: white;
@@ -43,12 +43,12 @@
 		button:hover {
 			opacity: 0.8;
 		}
-		
+
 		.signupbtn {
 			position: relative;
 			/*width: 60%;*/
 		}
-		
+
 		/* Extra styles for the cancel button */
 		.cancelbtn {
 			position: relative;
@@ -69,10 +69,10 @@
 			width: 40%;
 			border-radius: 50%;
 		}
-		
+
 		.container {
 			width: 60%;
-			border-radius: 10px; 	
+			border-radius: 10px;
 			padding: 16px;
 		}
 
@@ -179,7 +179,7 @@
 					<a href="#banner" class="button circled scrolly">Start</a>
 				</footer>
 			</div>
-			
+
 			<!-- BARRA DI NAVIGAZIONE -->
             <nav id="nav">
                 <ul>
@@ -209,7 +209,7 @@
             </nav>
         </div>
     </div>
-	
+
 	<!-- DIV DEL LOGIN A COMPARSA -->
 	<div id="login_div" class="modal">
 		<div class="modal-content animate">
@@ -234,19 +234,19 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- DIV A COMPARSA DELLA REGISTRAZIONE -->
 	<div id="register_div" class="modal">
-		
+
 		<div class="modal-content">
 			<div class="container" style="width: 100%;">
 				<h1>Registrati</h1>
 				<p>Compila questo modulo per creare il tuo account.</p>
 				<hr>
-				
+
 				<label><b>Email</b></label>
 				<input type="text" placeholder="inserisci la tua Email" id="email" required>
-				
+
 				<label><b>Nome</b></label>
 				<input type="text" placeholder="Inserisci il tuo nome" id="nome" required>
 
@@ -283,8 +283,22 @@
 			}
 		}
 	</script>
-	
+
+  <script>
+  function creaCookie(nomeCookie,valore,durataGiorni) {
+    var dataAttuale, expires;
+    if (durataGiorni) {
+        dataAttuale = new Date();
+        dataAttuale.setTime(dataAttuale.getTime()+(days*24*60*60*1000));
+        expires = "; expires=" + dataAttuale.toGMTString();
+            }else{
+        expires = "";
+    }
+    document.cookie = nomeCookie + "=" + valore + ";expires=" + expires + "; path=/";
+  }
+  </script>
+
 	<script src="/js/utente.js"></script>
-	
+
 </body>
 </html>

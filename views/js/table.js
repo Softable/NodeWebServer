@@ -1,3 +1,7 @@
+function tabelle(username){
+	alert(tabelle_utente("AlMax"));
+}
+
 function inserisci_tabella_inPagina(id){
 	try{
 		if (document.getElementById("tabella"+id)) {
@@ -19,7 +23,7 @@ function inserisci_tabella_inPagina(id){
 				}
 				var cella = riga.insertCell(i%colonne);
 				cella.id="cella"+id+((i)+1);
-				var dato  = tabella.valori[i];
+				var dato = tabella.valori[i];
 				cella.innerHTML+=(dato);
 				document.getElementById("cella"+id+((i)+1)).setAttribute("class", "column100 column"+((i%colonne)+1));
 				document.getElementById("cella"+id+((i)+1)).setAttribute("data-column", "column"+((i%colonne)+1));
@@ -30,6 +34,19 @@ function inserisci_tabella_inPagina(id){
 	}catch(error){
 		alert("Questa tabella non esiste!");
 	}
+}
+
+function tabelle_utente(username){
+    var id = [];
+    $.ajax({
+        url: 'http://localhost:8080/tabella/tabelle_utente/' + username,
+        type: 'GET',
+        async: false,
+        success: function(data) {
+            id=data;
+        }
+      });
+    return id;
 }
 
 function richiedi_tabella(id_tabella){
@@ -92,6 +109,5 @@ function change_color(version) {
 		$(table2).find("." + column).removeClass('hov-column-' + verTable);
 		$(table1).find(".row100.head ." + column).removeClass('hov-column-head-' + verTable);
 	});
-
 
 });

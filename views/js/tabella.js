@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 function visualizza_tabelle() {
   var tabelle = [];
   $.ajax({
@@ -17,7 +15,6 @@ function visualizza_tabelle() {
   return tabelle;
 }
 
->>>>>>> ed1fcc7f03b04e09a8dd4e560700d367f569165d
 function richiedi_tabella(id_tabella){
     var tabella = {};
     $.ajax({
@@ -92,4 +89,17 @@ function elimina_tabella() {
           alert("Esito eliminazione: "+esito);
         });
     });
+}
+
+function tabelle_utente(username){
+    var id = [];
+    $.ajax({
+        url: 'http://localhost:8080/tabella/tabelle_utente/' + username,
+        type: 'GET',
+        async: false,
+        success: function(data) {
+            id=data;
+        }
+      });
+      return id;
 }
