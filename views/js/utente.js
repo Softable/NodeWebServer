@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 function visualizza_utenti(){
   var utenti = [];
   $.ajax({
@@ -17,7 +15,6 @@ function visualizza_utenti(){
   return utenti;
 }
 
->>>>>>> ed1fcc7f03b04e09a8dd4e560700d367f569165d
 function richiedi_utente(username) {
   var utente = {};
   $.ajax({

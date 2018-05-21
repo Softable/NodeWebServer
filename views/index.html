@@ -15,7 +15,7 @@
 		
 		/* Full-width input fields */
 		input[type=text], input[type=password] {
-			width: 60%;
+			width: 100%;
 			padding: 12px 20px;
 			margin: 8px 0;
 			display: inline-block;
@@ -44,9 +44,9 @@
 			opacity: 0.8;
 		}
 		
-		#signupbtn {
+		.signupbtn {
 			position: relative;
-			width: 80%;
+			/*width: 60%;*/
 		}
 		
 		/* Extra styles for the cancel button */
@@ -61,6 +61,7 @@
 		.imgcontainer {
 			text-align: center;
 			margin: 24px 0 12px 0;
+			padding-top: 20px;
 			position: relative;
 		}
 
@@ -70,6 +71,8 @@
 		}
 		
 		.container {
+			width: 60%;
+			border-radius: 10px; 	
 			padding: 16px;
 		}
 
@@ -168,7 +171,7 @@
 		<div id="header">
 			<div class="inner">
 				<header>
-					<h1><a href="index.html" id="logo">Helios</a></h1>
+					<h1><a href="index.html" id="logo">Softable</a></h1>
 					<hr />
 					<p>Another fine freebie by HTML5 UP</p>
 				</header>
@@ -214,18 +217,18 @@
 				<img src="assets/images/account.png" alt="Avatar" class="avatar">
 			</div>
 
-			<div class="container">
+			<div class="container" style="width: 100%;">
 
-				<label for="username"><b>Username</b></label>
-				<input type="text" placeholder="Inserisci il tuo Username" id="username" required>
+				<label for="username"><b>Username</b></label><br>
+				<input type="text" placeholder="Inserisci il tuo Username" id="username" required><br>
 
-				<label for="password"><b>Password</b></label>
+				<label for="password"><b>Password</b></label><br>
 				<input type="password" placeholder="Inserisci la tua Password" id="password" required>
 
-				<button type="submit" onclick="accedi_utente()">Entra</button>
+				<button type="submit" class="signupbtn" onclick="accedi_utente()">Entra</button>
 			</div>
 
-			<div class="container" style="background-color:#f1f1f1">
+			<div class="container" style="background-color:#f1f1f1; width: 100%;">
 				<button type="button" onclick="document.getElementById('login_div').style.display='none'" class="cancelbtn">Annulla</button>
 				<span class="psw">Hai dimenticato la <a href="#">password?</a></span>
 			</div>
@@ -236,7 +239,7 @@
 	<div id="register_div" class="modal">
 		
 		<div class="modal-content">
-			<div class="container">
+			<div class="container" style="width: 100%;">
 				<h1>Registrati</h1>
 				<p>Compila questo modulo per creare il tuo account.</p>
 				<hr>
@@ -261,7 +264,7 @@
 
 				<div class="clearfix">
 					<button type="button" onclick="document.getElementById('register_div').style.display='none'" class="cancelbtn">Annulla</button>
-					<button type="submit" id="signupbtn" class="signupbtn" onclick="inserisci_utente()">Entra</button>
+					<button type="submit" class="signupbtn" onclick="inserisci_utente()" style="width: 80%; margin-left: 8%;">Entra</button>
 				</div>
 			</div>
 		</div>
@@ -280,6 +283,8 @@
 			}
 		}
 	</script>
+	
+	<script src="/js/utente.js"></script>
 	
 </body>
 </html>
