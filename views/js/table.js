@@ -1,5 +1,12 @@
-function tabelle(username){
-	alert(tabelle_utente("AlMax"));
+function visualizza_tabelle_utente(){
+	var username = leggiCookie('utente');
+	if(username=="null")
+		alert("Accedi dalla pagina di login!");
+		else{
+			tabelle_utente(username).forEach(function(tabella) {
+    		inserisci_tabella_inPagina(tabella);
+			});
+		}
 }
 
 function inserisci_tabella_inPagina(id){
@@ -34,6 +41,21 @@ function inserisci_tabella_inPagina(id){
 	}catch(error){
 		alert("Questa tabella non esiste!");
 	}
+}
+
+function leggiCookie(name) {
+    var i, c, ca, nameEQ = name + "=";
+    ca = document.cookie.split(';');
+    for(i=0;i < ca.length;i++) {
+        c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1,c.length);
+        }
+        if (c.indexOf(nameEQ) == 0) {
+            return c.substring(nameEQ.length,c.length);
+        }
+    }
+    return 'null';
 }
 
 function tabelle_utente(username){

@@ -225,7 +225,7 @@
 				<label for="password"><b>Password</b></label><br>
 				<input type="password" placeholder="Inserisci la tua Password" id="password" required>
 
-				<button type="submit" class="signupbtn" onclick="accedi_utente()">Entra</button>
+				<button type="submit" class="signupbtn" onclick="creaCookie('utente',document.getElementById('username').value,10);accedi_utente();">Entra</button>
 			</div>
 
 			<div class="container" style="background-color:#f1f1f1; width: 100%;">
@@ -285,17 +285,10 @@
 	</script>
 
   <script>
-  function creaCookie(nomeCookie,valore,durataGiorni) {
-    var dataAttuale, expires;
-    if (durataGiorni) {
-        dataAttuale = new Date();
-        dataAttuale.setTime(dataAttuale.getTime()+(days*24*60*60*1000));
-        expires = "; expires=" + dataAttuale.toGMTString();
-            }else{
-        expires = "";
-    }
-    document.cookie = nomeCookie + "=" + valore + ";expires=" + expires + "; path=/";
-  }
+  function creaCookie(name,value) {
+    document.cookie = name + "=" + value + "; path=/";
+}
+
   </script>
 
 	<script src="/js/utente.js"></script>
