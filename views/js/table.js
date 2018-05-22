@@ -2,11 +2,11 @@ function visualizza_tabelle_utente(){
 	var username = leggiCookie('utente');
 	if(username=="null")
 		alert("Accedi dalla pagina di login!");
-		else{
-			tabelle_utente(username).forEach(function(tabella) {
-    		inserisci_tabella_inPagina(tabella);
-			});
-		}
+	else{
+		tabelle_utente(username).forEach(function(tabella) {
+  		inserisci_tabella_inPagina(tabella);
+		});
+	}
 }
 
 function inserisci_tabella_inPagina(id){
