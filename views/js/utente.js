@@ -100,8 +100,7 @@ function accedi_utente() {
   password = document.getElementById("password").value;
 
   utente = richiedi_utente(username);
-  console.log(utente);
-
+  
   if (utente.password == password) {
     window.location.replace("/tabella");
   } else {
