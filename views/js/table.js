@@ -10,7 +10,7 @@ function visualizza_tabelle_utente(){
 }
 
 function inserisci_tabella_inPagina(id){
-	//try{
+	try{
 		if (document.getElementById("tabella"+id)) {
 	    alert("La tabella già presente in pagina!");
 		}else{
@@ -26,16 +26,18 @@ function inserisci_tabella_inPagina(id){
 		    document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(i+1)+"' data-column='column"+(i+1)+"'>"+modello.attributi[i]+"</th>";
 			}
 
-			for(var i=0 ; i<quantita_dati ; i++){
+			for(var i=0,j=0; i<quantita_dati ; i++){
 				if(i%colonne==0){
 					var riga = tabellaHTML.insertRow(tabellaHTML.rows.length);
+					riga.id = "riga"+id+""+j;
 					var cella = riga.insertCell(i%colonne);
 					cella.id="cella"+id+"E"+((i)+1);
-					var dato = "<button>Elimina</button>";
+					var dato = "<button onclick='elimina_riga(this.value)' value='"+"riga"+id+""+j+"'>Elimina</button>";
 					cella.innerHTML+=(dato);
 					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("class", "column100 column"+(colonne+1));
 					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("data-column", "column"+(colonne+1));
 					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("style", "text-align:center;");
+					j++;
 				}
 				var cella = riga.insertCell((i%colonne)+1);
 				cella.id="cella"+id+((i)+1);
@@ -47,9 +49,9 @@ function inserisci_tabella_inPagina(id){
 			}
 			jQuery("tr").addClass("row100");
 		}
-	/*}catch(error){
+	}catch(error){
 		alert("Questa tabella non esiste!");
-	}*/
+	}
 }
 
 function leggiCookie(name) {
@@ -109,6 +111,36 @@ function richiedi_modello(id_modello){
       }
     });
     return modello;
+}
+
+function elimina_riga(id_riga){
+	if(confirm("Sei sicuro di voler eliminare la riga?")){
+		var riga = document.getElementById(id_riga);
+		/*var tabella=richiedi_tabella(id);
+		var dato = tabella.valori[i];*/
+		riga.parentNode.removeChild(riga);
+	}
+}
+
+function modifica_tabella(dati) {
+    $(document).ready(function() {
+        var obj = {};
+        obj = {
+            "id_tabella" : parseInt(document.getElementById("id_tabella").value),
+            "username_utente": document.getElementById("username").value,
+            "id_modelloTabella": document.getElementById("id_modelloTabella").value,
+            "tabella" : dati
+        };
+        $.ajax({
+            url : "http://localhost:8080/tabella/modifica",
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify(obj),
+            dataType: "json"
+        }).done(function (esito) {
+            alert("Esito modifica: "+esito);
+        });
+    });
 }
 
 function change_color(version) {
