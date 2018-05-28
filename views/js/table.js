@@ -10,7 +10,7 @@ function visualizza_tabelle_utente(){
 }
 
 function inserisci_tabella_inPagina(id){
-	try{
+	//try{
 		if (document.getElementById("tabella"+id)) {
 	    alert("La tabella già presente in pagina!");
 		}else{
@@ -21,14 +21,23 @@ function inserisci_tabella_inPagina(id){
 			var colonne=modello.attributi.length;
 			$("#div_table").append("<table data-vertable='ver1' id='tabella"+id+"'><thead><tr class='row100 head' id='attributi"+id+"'></tr></thead><tbody id='dati"+id+"'></tbody></table>");
 			var tabellaHTML = document.getElementById("tabella"+id).getElementsByTagName("tbody")[0];
+			document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(colonne+1)+"' data-column='column"+(colonne+1)+"'>Elimina</th>";
 			for(var i=0 ; i<colonne ; i++){
 		    document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(i+1)+"' data-column='column"+(i+1)+"'>"+modello.attributi[i]+"</th>";
 			}
+
 			for(var i=0 ; i<quantita_dati ; i++){
 				if(i%colonne==0){
 					var riga = tabellaHTML.insertRow(tabellaHTML.rows.length);
+					var cella = riga.insertCell(i%colonne);
+					cella.id="cella"+id+"E"+((i)+1);
+					var dato = "<button>Elimina</button>";
+					cella.innerHTML+=(dato);
+					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("class", "column100 column"+(colonne+1));
+					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("data-column", "column"+(colonne+1));
+					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("style", "text-align:center;");
 				}
-				var cella = riga.insertCell(i%colonne);
+				var cella = riga.insertCell((i%colonne)+1);
 				cella.id="cella"+id+((i)+1);
 				var dato = tabella.valori[i];
 				cella.innerHTML+=(dato);
@@ -38,9 +47,9 @@ function inserisci_tabella_inPagina(id){
 			}
 			jQuery("tr").addClass("row100");
 		}
-	}catch(error){
+	/*}catch(error){
 		alert("Questa tabella non esiste!");
-	}
+	}*/
 }
 
 function leggiCookie(name) {
