@@ -25,7 +25,6 @@ function inserisci_tabella_inPagina(id){
 			for(var i=0 ; i<colonne ; i++){
 		    document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(i+1)+"' data-column='column"+(i+1)+"'>"+modello.attributi[i]+"</th>";
 			}
-
 			for(var i=0,j=0; i<quantita_dati ; i++){
 				if(i%colonne==0){
 					var riga = tabellaHTML.insertRow(tabellaHTML.rows.length);
@@ -67,6 +66,30 @@ function leggiCookie(name) {
         }
     }
     return 'null';
+}
+
+function elimina_riga(id_riga){
+	if(confirm("Sei sicuro di voler eliminare la riga?")){
+		var riga = document.getElementById(id_riga);
+		var celle = document.getElementById(id_riga).cells;
+		var posizione_cella = [];
+		var posizione_riga = id_riga.split("riga");
+		var posizione_cella_inTabella;
+		var posizioni_dati = [];
+		for (var i=1; i<celle.length ; i++){
+			posizione_cella = celle[i].id.split("cella");
+			posizione_cella_inTabella = posizione_cella[1]-posizione_riga[1];
+			posizioni_dati.push(posizione_cella_inTabella);
+		}
+		var id_tabella = (posizione_riga[1]/((posizione_cella_inTabella.toString().length)*10)).toFixed(0);
+		var tabella = richiedi_tabella(id_tabella);
+		var dati = tabella.valori;
+		for(var posizione=posizioni_dati.length-1 ; posizione>=0 ; posizione--){
+    	dati.splice(posizioni_dati[posizione], 1);
+		}
+		modifica_tabella(id_tabella,tabella.username_utente,tabella.id_modelloTabella,dati);
+		riga.parentNode.removeChild(riga);
+	}
 }
 
 function tabelle_utente(username){
@@ -113,22 +136,13 @@ function richiedi_modello(id_modello){
     return modello;
 }
 
-function elimina_riga(id_riga){
-	if(confirm("Sei sicuro di voler eliminare la riga?")){
-		var riga = document.getElementById(id_riga);
-		/*var tabella=richiedi_tabella(id);
-		var dato = tabella.valori[i];*/
-		riga.parentNode.removeChild(riga);
-	}
-}
-
-function modifica_tabella(dati) {
+function modifica_tabella(id_tabella,username,modello,dati) {
     $(document).ready(function() {
         var obj = {};
         obj = {
-            "id_tabella" : parseInt(document.getElementById("id_tabella").value),
-            "username_utente": document.getElementById("username").value,
-            "id_modelloTabella": document.getElementById("id_modelloTabella").value,
+            "id_tabella" : id_tabella,
+            "username_utente": username,
+            "id_modelloTabella": modello,
             "tabella" : dati
         };
         $.ajax({
@@ -138,7 +152,7 @@ function modifica_tabella(dati) {
             data: JSON.stringify(obj),
             dataType: "json"
         }).done(function (esito) {
-            alert("Esito modifica: "+esito);
+            console.log("Esito modifica: "+esito);
         });
     });
 }
