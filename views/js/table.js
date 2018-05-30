@@ -21,7 +21,7 @@ function inserisci_tabella_inPagina(id){
 			var colonne=modello.attributi.length;
 			$("#div_table").append("<table data-vertable='ver1' id='tabella"+id+"'><thead><tr class='row100 head' id='attributi"+id+"'></tr></thead><tbody id='dati"+id+"'></tbody></table>");
 			var tabellaHTML = document.getElementById("tabella"+id).getElementsByTagName("tbody")[0];
-			document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(colonne+1)+"' data-column='column"+(colonne+1)+"'>Elimina</th>";
+			document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(colonne+1)+"' data-column='column"+(colonne+1)+"'><button onclick='elimina_tabella(this.value)' value='"+id+"'>Elimina la Tabella</button></th>";
 			for(var i=0 ; i<colonne ; i++){
 		    document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(i+1)+"' data-column='column"+(i+1)+"'>"+modello.attributi[i]+"</th>";
 			}
@@ -31,7 +31,7 @@ function inserisci_tabella_inPagina(id){
 					riga.id = "riga"+id+""+j;
 					var cella = riga.insertCell(i%colonne);
 					cella.id="cella"+id+"E"+((i)+1);
-					var dato = "<button onclick='elimina_riga(this.value)' value='"+"riga"+id+""+j+"'>Elimina</button>";
+					var dato = "<button onclick='elimina_riga(this.value)' value='"+"riga"+id+""+j+"'>Elimina la Riga</button>";
 					cella.innerHTML+=(dato);
 					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("class", "column100 column"+(colonne+1));
 					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("data-column", "column"+(colonne+1));
@@ -89,6 +89,20 @@ function elimina_riga(id_riga){
 		}
 		modifica_tabella(id_tabella,tabella.username_utente,tabella.id_modelloTabella,dati);
 		riga.parentNode.removeChild(riga);
+	}
+}
+
+function elimina_tabella(id_tabella) {
+	if(confirm("Sei sicuro di voler eliminare la tabella?")){
+    $(document).ready(function() {
+        var obj = id_tabella;
+        $.ajax({
+            url: "http://localhost:8080/tabella/elimina" + "/" + obj,
+            type: "GET"
+        }).done(function (esito) {
+          console.log("Esito eliminazione: "+esito);
+        });
+    });
 	}
 }
 
