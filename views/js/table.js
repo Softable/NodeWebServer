@@ -78,14 +78,14 @@ function elimina_riga(id_riga){
 		var posizioni_dati = [];
 		for (var i=1; i<celle.length ; i++){
 			posizione_cella = celle[i].id.split("cella");
-			posizione_cella_inTabella = posizione_cella[1]-posizione_riga[1];
+			posizione_cella_inTabella = posizione_cella[1]-(Math.floor(posizione_riga[1]/10)*10);
 			posizioni_dati.push(posizione_cella_inTabella);
 		}
 		var id_tabella = (posizione_riga[1]/((posizione_cella_inTabella.toString().length)*10)).toFixed(0);
 		var tabella = richiedi_tabella(id_tabella);
 		var dati = tabella.valori;
 		for(var posizione=posizioni_dati.length-1 ; posizione>=0 ; posizione--){
-    	dati.splice(posizioni_dati[posizione], 1);
+    	dati.splice(posizioni_dati[posizione]-1, 1);
 		}
 		modifica_tabella(id_tabella,tabella.username_utente,tabella.id_modelloTabella,dati);
 		riga.parentNode.removeChild(riga);
