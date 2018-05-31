@@ -5,9 +5,21 @@
     <title>Home</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
     <!--[[   CSS   ]]-->
+	<!-- CSS del template -->
     <link rel="stylesheet" href="assets/css/main.css" />
+	<!-- CSS della tabella -->
+	<link rel="stylesheet" href="assets/css/mainTable.css" />
+	<link rel="stylesheet" href="assets/css/utilTable.css" />
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="vendor/animate/animate.css" />
+	<link rel="stylesheet" href="vendor/select2/select2.min.css" />
+	<link rel="stylesheet" href="vendor/perfect-scrollbar/perfect-scrollbar.css" />
+	
+	
     <!--[[   SCRIPT   ]]-->
+	<!-- Script del template Helios -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.dropotron.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -15,30 +27,13 @@
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+	<!-- Script per login e registrazione -->
     <script src="js/utente.js"></script>
 	
 	<!--  STYLE -->
 	<style>
 		/* TABELLA */
-		table {
-			width: 20%;
-			text-align: center;
-			
-			border-radius: 10px;
-		}
 		
-		#start {
-			border-top-left-radius: 10px;
-		}
-		
-		#end {
-			border-top-right-radius: 10px;
-		}
-		
-		th, td {
-			width: 5%;
-			text-align: center;
-		}
 	</style>
 	
 	<style>
@@ -201,46 +196,49 @@
 				<!--footer>
 					<a href="#banner" class="button circled scrolly">Start</a>
 				</footer-->
-				<!--div class="limiter"-->
-					<!--div class="container-table100"-->
-						<div class="wrap-table100">
-							<div class="table100 ver1 m-b-110">
-								<table data-vertable="ver1">
+				
+				<div class="container-table100">
+					<div class="wrap-table100">
+						<div class="table100 ver1 m-b-110">
+							<div class="table100-head">
+								<table>
 									<thead>
 										<tr class="row100 head">
-											<th class="column100 column1" data-column="column1" id="start">Name</th>
-											<th class="column100 column2" data-column="column2">Sunday</th>
-											<th class="column100 column3" data-column="column3">Monday</th>
-											<th class="column100 column4" data-column="column4" id="end">Tuesday</th>
+											<th class="cell100 column1">Class name</th>
+											<th class="cell100 column2">Type</th>
+											<th class="cell100 column3">Hours</th>
+											<th class="cell100 column4">Trainer</th>
+											<th class="cell100 column5">...</th>
 										</tr>
 									</thead>
+								</table>
+							</div>
+
+							<div class="table100-body js-pscroll">
+								<table>
 									<tbody>
-										<tr class="row100">
-											<td class="column100 column1" data-column="column1">Lawrence Scott</td>
-											<td class="column100 column2" data-column="column2">8:00 AM</td>
-											<td class="column100 column3" data-column="column3">--</td>
-											<td class="column100 column4" data-column="column4">--</td>
+										<tr class="row100 body">
+											<td class="cell100 column1">Like a butterfly</td>
+											<td class="cell100 column2">Boxing</td>
+											<td class="cell100 column3">9:00 AM - 11:00 AM</td>
+											<td class="cell100 column4">Aaron Chapman</td>
+											<td class="cell100 column5">...</td>
 										</tr>
 
-										<tr class="row100">
-											<td class="column100 column1" data-column="column1">Jane Medina</td>
-											<td class="column100 column2" data-column="column2">--</td>
-											<td class="column100 column3" data-column="column3">5:00 PM</td>
-											<td class="column100 column4" data-column="column4">5:00 PM</td>
-										</tr>
-
-										<tr class="row100">
-											<td class="column100 column1" data-column="column1">Billy Mitchell</td>
-											<td class="column100 column2" data-column="column2">9:00 AM</td>
-											<td class="column100 column3" data-column="column3">--</td>
-											<td class="column100 column4" data-column="column4">--</td>
+										<tr class="row100 body">
+											<td class="cell100 column1">Mind & Body</td>
+											<td class="cell100 column2">Yoga</td>
+											<td class="cell100 column3">8:00 AM - 9:00 AM</td>
+											<td class="cell100 column4">Adam Stewart</td>
+											<td class="cell100 column5">...</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
-					<!--/div-->
-				<!--/div-->
+					</div>
+				</div>
+				
 			</div>
 
 			<!-- BARRA DI NAVIGAZIONE -->
