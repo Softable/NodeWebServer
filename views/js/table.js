@@ -19,6 +19,7 @@ function inserisci_tabella_inPagina(id){
 			var id_modello=tabella.id_modelloTabella;
 			var modello=richiedi_modello(id_modello);
 			var colonne=modello.attributi.length;
+			$("#div_table").append("<div id=aggiungi"+id+"><button id='"+id+"aggiungi' onclick=aggiungi_riga('"+id+"') >Aggiungi una nuova riga</button></div>");
 			$("#div_table").append("<table data-vertable='ver1' id='tabella"+id+"'><thead><tr class='row100 head' id='attributi"+id+"'></tr></thead><tbody id='dati"+id+"'></tbody></table>");
 			var tabellaHTML = document.getElementById("tabella"+id).getElementsByTagName("tbody")[0];
 			document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(colonne+1)+"' data-column='column"+(colonne+1)+"'>Modifica</th>";
@@ -57,7 +58,7 @@ function inserisci_tabella_inPagina(id){
 			jQuery("tr").addClass("row100");
 		}
 	}catch(error){
-		alert("Questa tabella non esiste!");
+		alert("Questa tabella non esiste oppure c'è un errore!");
 	}
 }
 
@@ -74,6 +75,26 @@ function leggiCookie(name) {
         }
     }
     return 'null';
+}
+
+function aggiungi_riga(id_tabella){
+	var tabella = richiedi_tabella(id_tabella);
+	var attributi = richiedi_modello(tabella.id_modelloTabella).attributi;
+	document.getElementById("aggiungi"+id_tabella).innerHTML = "<button id='"+id_tabella+"aggiungiConferma' onclick=conferma_inserimento('"+id_tabella+"') >Conferma l'inserimento</button>";
+	attributi.forEach(function(colonna){
+		document.getElementById("aggiungi"+id_tabella).innerHTML+="<input id='"+colonna+"Input' value='"+colonna+"'></input>";
+	});
+}
+
+function conferma_inserimento(id_tabella){
+	var tabella = richiedi_tabella(id_tabella);
+	var attributi = richiedi_modello(tabella.id_modelloTabella).attributi;
+	var dati = tabella.valori;
+	attributi.forEach(function(colonna){
+		dati.push(document.getElementById(colonna+"Input").value);
+	});
+	modifica_tabella(id_tabella,tabella.username_utente,tabella.id_modelloTabella,dati);
+	location.reload();
 }
 
 function modifica_riga(id_riga){
@@ -131,6 +152,7 @@ function idTabella_posizioniElementi(id_riga){
 	}
 	var id_e_elementi = [];
 	var id_tabella = (posizione_riga[1]/((posizione_cella_inTabella.toString().length)*10)).toFixed(0);
+	console.log(((posizione_cella_inTabella.toString().length)*10));
 	id_e_elementi.push(id_tabella);
 	id_e_elementi.push(posizioni_dati);
 	return id_e_elementi;
