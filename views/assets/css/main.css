@@ -1557,7 +1557,7 @@
 		color: #5b5b5b;
 		font-size: 15pt;
 		line-height: 1.85em;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Source Sans Pro', sans-serif !important;
 		font-weight: 300;
 	}
 
@@ -1575,7 +1575,7 @@
 	input, textarea, select {
 		font-size: 15pt;
 		line-height: 1.85em;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Source Sans Pro', sans-serif !important;
 		font-weight: 300;
 	}
 
@@ -2231,7 +2231,7 @@
 				width: 300%;
 				position: absolute;
 				top: 50%;
-				margin-top: -2px;
+				margin-top: 0px;
 				height: 5px;
 				border-top: solid 1px rgba(192, 192, 192, 0.35);
 				border-bottom: solid 1px rgba(192, 192, 192, 0.35);
@@ -2249,7 +2249,7 @@
 
 			#nav > ul > li {
 				display: inline-block;
-				margin: -65px 0.5em 0 0.5em;
+				margin: -2em 0.5em 0 0.5em;
 				border-radius: 0.5em;
 				padding: 0.85em;
 				border: solid 1px transparent;
