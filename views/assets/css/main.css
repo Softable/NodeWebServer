@@ -1943,46 +1943,6 @@
 		border: 0;
 	}
 
-/* Table */
-/* TOLGO IL CSS DELLA TABELLA PER EVITARE CONFLITTI */
-	/*table {
-		width: 100%;
-	}
-
-		table.default {
-			width: 100%;
-		}
-
-			table.default tbody tr {
-				border-top: solid 1px #e5e5e5;
-			}
-
-				table.default tbody tr:first-child {
-					border-top: 0;
-				}
-
-				table.default tbody tr:nth-child(2n+1) {
-					background: #fafafa;
-				}
-
-			table.default td {
-				padding: 0.5em 1em 0.5em 1em;
-			}
-
-			table.default th {
-				text-align: left;
-				font-weight: 400;
-				padding: 0.5em 1em 0.5em 1em;
-			}
-
-			table.default thead {
-				border-bottom: solid 2px #e5e5e5;
-			}
-
-			table.default tfoot {
-				border-top: solid 2px #e5e5e5;
-			}*/
-
 /* Button */
 
 	input[type="button"],
@@ -2253,6 +2213,7 @@
 				border-radius: 0.5em;
 				padding: 0.85em;
 				border: solid 1px transparent;
+				color: #fff !important;
 				-moz-transition: color 0.35s ease-in-out, border-color 0.35s ease-in-out;
 				-webkit-transition: color 0.35s ease-in-out, border-color 0.35s ease-in-out;
 				-ms-transition: color 0.35s ease-in-out, border-color 0.35s ease-in-out;
