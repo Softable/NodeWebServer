@@ -374,8 +374,8 @@
 					</ul>
 				</li>
 				<li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
-				<li><a href="#" onclick="document.getElementById('login_div').style.display='block'" style="width:auto;">Accedi</a></li>
-				<li><a href="#" onclick="document.getElementById('register_div').style.display='block'" style="width:auto;">Registrati</a></li>
+				<li id="li_log"><a href="#" onclick="document.getElementById('login_div').style.display='block'" style="width:auto;">Accedi</a></li>
+				<li id="li_reg"><a href="#" onclick="document.getElementById('register_div').style.display='block'" style="width:auto;">Registrati</a></li>
 			</ul>
 		</nav>
     </div>
@@ -451,11 +451,13 @@
 				modal_register.style.display = "none";
 			}
 		}
-
-		function creaCookie(name,value) {
-			document.cookie = name + "=" + value + "; path=/";	
-		}
-
+		
+		if (leggiCookie('username') != null) {
+			var elem_reg = document.getElementById('li_reg');
+			var elem_log = document.getElementById('li_log');
+    		elem_reg.parentNode.removeChild(elem_reg);
+			
+		} 
   	</script>
 
 </body>
