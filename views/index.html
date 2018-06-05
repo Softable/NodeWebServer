@@ -194,7 +194,7 @@
 			</footer-->
 			
 
-			<div class="wrap-table100" style="width: 25%; float: left; margin: 5% 0 0 4%;">
+			<div class="wrap-table100" style="width: 25%; float: left; margin: 2em 0 0 2em;">
 				<div class="table100 ver1">
 					<div class="table100-head">
 						<table>
@@ -242,7 +242,7 @@
 				</div>
 			</div>
 			
-			<div class="wrap-table100" style="width: 25%; display: inline-block; margin-top: 5%">
+			<div class="wrap-table100" style="width: 25%; display: inline-block; margin-top: 2em;">
 				<div class="table100 ver1">
 					<div class="table100-head">
 						<table>
@@ -290,7 +290,7 @@
 				</div>
 			</div>
 			
-			<div class="wrap-table100" style="width: 25%; float: right; margin: 5% 4% 0 0;">
+			<div class="wrap-table100" style="width: 25%; float: right; margin: 2em 2em 0 0;">
 				<div class="table100 ver1">
 					<div class="table100-head">
 						<table>
@@ -338,7 +338,7 @@
 				</div>
 			</div>
 			
-			<div class="contact" style="position: relative; display: block; bottom: 0%; margin: 3% 0 0 0;">
+			<div class="contact" style="position: relative; display: block; bottom: 0%; margin: 2% 0 0 0;">
 				<p style="text-align: center">Clicca sulle nostre foto per contattarci: </p>
 				<a href="https://www.linkedin.com/in/alessandro-garau-8a182214b/">
 					<img alt="alessandro_garau" src="assets/images/garry.jpg" style="border-radius: 100%; height: 5%; width: 5%;"/>
@@ -374,8 +374,8 @@
 					</ul>
 				</li>
 				<li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
-				<li><a href="#" onclick="document.getElementById('login_div').style.display='block'" style="width:auto;">Accedi</a></li>
-				<li><a href="#" onclick="document.getElementById('register_div').style.display='block'" style="width:auto;">Registrati</a></li>
+				<li id="li_log"><a href="#" onclick="document.getElementById('login_div').style.display='block'" style="width:auto;">Accedi</a></li>
+				<li id="li_reg"><a href="#" onclick="document.getElementById('register_div').style.display='block'" style="width:auto;">Registrati</a></li>
 			</ul>
 		</nav>
     </div>
@@ -451,11 +451,13 @@
 				modal_register.style.display = "none";
 			}
 		}
-
-		function creaCookie(name,value) {
-			document.cookie = name + "=" + value + "; path=/";	
-		}
-
+		
+		if (leggiCookie('username') != null) {
+			var elem_reg = document.getElementById('li_reg');
+			var elem_log = document.getElementById('li_log');
+    		elem_reg.parentNode.removeChild(elem_reg);
+			
+		} 
   	</script>
 
 </body>
