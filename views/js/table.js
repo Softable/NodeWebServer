@@ -19,18 +19,19 @@ function inserisci_tabella_inPagina(id){
 			var id_modello=tabella.id_modelloTabella;
 			var modello=richiedi_modello(id_modello);
 			var colonne=modello.attributi.length;
-			$("#div_table").append("<div id=aggiungi"+id+"><button id='"+id+"aggiungi' onclick=aggiungi_riga('"+id+"') >Aggiungi una nuova riga</button></div>");
-			$("#div_table").append("<table data-vertable='ver1' id='tabella"+id+"'><thead><tr class='row100 head' id='attributi"+id+"'></tr></thead><tbody id='dati"+id+"'></tbody></table>");
+			$("#header").append("<br><div id=aggiungi"+id+"><button id='"+id+"aggiungi' onclick=aggiungi_riga('"+id+"') >Aggiungi una nuova riga</button></div>");
+			$("#header").append("<div class='wrap-table100' style='float: left; margin: 5% 0 0 4%;'><div class='table100 ver1'><div class='table100-head'><table><thead><tr class='row100 head' id='attributi"+id+"'></tr></thead></table></div><div class='table100-body js-pscroll'><table id='tabella"+id+"'><tbody id='dati"+id+"'></tbody></table></div></div></div>");
 			var tabellaHTML = document.getElementById("tabella"+id).getElementsByTagName("tbody")[0];
-			document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(colonne+1)+"' data-column='column"+(colonne+1)+"'>Modifica</th>";
-			document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(colonne+2)+"' data-column='column"+(colonne+2)+"'><button onclick='elimina_tabella(this.value)' value='"+id+"'>Elimina la Tabella</button></th>";
+			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(colonne+1)+"' data-column='column"+(colonne+1)+"'>Modifica</th>";
+			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(colonne+2)+"' data-column='column"+(colonne+2)+"'><button onclick='elimina_tabella(this.value)' value='"+id+"'>Elimina la Tabella</button></th>";
 			for(var i=0 ; i<colonne ; i++){
-		    document.getElementById('attributi'+id).innerHTML+="<th class='column100 column"+(i+2)+"' data-column='column"+(i+2)+"'>"+modello.attributi[i]+"</th>";
+		    document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(i+2)+"' data-column='column"+(i+2)+"'>"+modello.attributi[i]+"</th>";
 			}
 			for(var i=0,j=0; i<quantita_dati ; i++){
 				if(i%colonne==0){
 					var riga = tabellaHTML.insertRow(tabellaHTML.rows.length);
 					riga.id = "riga"+id+""+j;
+					document.getElementById("riga"+id+""+j).setAttribute("class", "row100 body");
 					var cella = riga.insertCell(0);
 					cella.id="cella"+id+"M"+((i)+1);
 					var bottone_modifica = "<button onclick='modifica_riga(this.value)' value='"+"riga"+id+""+j+"'>Modifica la Riga</button>";
@@ -39,26 +40,19 @@ function inserisci_tabella_inPagina(id){
 					cella.id="cella"+id+"E"+((i)+1);
 					var bottone_elimina = "<button onclick='elimina_riga(this.value)' value='"+"riga"+id+""+j+"'>Elimina la Riga</button>";
 					cella.innerHTML+=(bottone_elimina);
-					document.getElementById("cella"+id+"M"+((i)+1)).setAttribute("class", "column100 column"+(colonne+1));
-					document.getElementById("cella"+id+"M"+((i)+1)).setAttribute("data-column", "column"+(colonne+1));
-					document.getElementById("cella"+id+"M"+((i)+1)).setAttribute("style", "text-align:center;");
-					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("class", "column100 column"+(colonne+2));
-					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("data-column", "column"+(colonne+2));
-					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("style", "text-align:center;");
+					document.getElementById("cella"+id+"M"+((i)+1)).setAttribute("class", "cell100 column"+(colonne+1));
+					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("class", "cell100 column"+(colonne+2));
 					j++;
 				}
 				var cella = riga.insertCell((i%colonne)+2);
 				cella.id="cella"+id+((i)+1);
 				var dato = tabella.valori[i];
 				cella.innerHTML+=(dato);
-				document.getElementById("cella"+id+((i)+1)).setAttribute("class", "column100 column"+((i%colonne)+1));
-				document.getElementById("cella"+id+((i)+1)).setAttribute("data-column", "column"+((i%colonne)+1));
-				document.getElementById("cella"+id+((i)+1)).setAttribute("style", "text-align:center;");
+				document.getElementById("cella"+id+((i)+1)).setAttribute("class", "cell100 column"+((i%colonne)+1));
 			}
-			jQuery("tr").addClass("row100");
 		}
 	}catch(error){
-		alert("Questa tabella non esiste oppure c'è un errore!");
+		console.log("Questa tabella non esiste oppure c'è un errore!");
 	}
 }
 
