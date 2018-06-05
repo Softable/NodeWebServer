@@ -144,12 +144,11 @@ function idTabella_posizioniElementi(id_riga){
 	var posizioni_dati = [];
 	for (var i=2; i<celle.length ; i++){
 		posizione_cella = celle[i].id.split("cella");
-		posizione_cella_inTabella = posizione_cella[1]-(Math.floor(posizione_riga[1]/10)*10);
+		posizione_cella_inTabella = posizione_cella[1];
 		posizioni_dati.push(posizione_cella_inTabella);
 	}
 	var id_e_elementi = [];
-	var id_tabella = (posizione_riga[1]/((posizione_cella_inTabella.toString().length)*10)).toFixed(0);
-	console.log(((posizione_cella_inTabella.toString().length)*10));
+	var id_tabella = posizione_riga[0];
 	id_e_elementi.push(id_tabella);
 	id_e_elementi.push(posizioni_dati);
 	return id_e_elementi;
