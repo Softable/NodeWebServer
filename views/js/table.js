@@ -22,33 +22,36 @@ function inserisci_tabella_inPagina(id){
 			$("#header").append("<br><div id=aggiungi"+id+"><button id='"+id+"aggiungi' onclick=aggiungi_riga('"+id+"') >Aggiungi una nuova riga</button></div>");
 			$("#header").append("<div class='wrap-table100' style='float: left; margin: 5% 0 0 4%;'><div class='table100 ver1'><div class='table100-head'><table><thead><tr class='row100 head' id='attributi"+id+"'></tr></thead></table></div><div class='table100-body js-pscroll'><table id='tabella"+id+"'><tbody id='dati"+id+"'></tbody></table></div></div></div>");
 			var tabellaHTML = document.getElementById("tabella"+id).getElementsByTagName("tbody")[0];
-			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(colonne+1)+"' data-column='column"+(colonne+1)+"'>Modifica</th>";
-			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(colonne+2)+"' data-column='column"+(colonne+2)+"'><button onclick='elimina_tabella(this.value)' value='"+id+"'>Elimina la Tabella</button></th>";
-			for(var i=0 ; i<colonne ; i++){
-		    document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(i+2)+"' data-column='column"+(i+2)+"'>"+modello.attributi[i]+"</th>";
+			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(1)+"' data-column='column"+(1)+"'>Modifica</th>";
+			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(2)+"' data-column='column"+(2)+"'><button onclick='elimina_tabella(this.value)' value='"+id+"'>Elimina la Tabella</button></th>";
+			for(var i=3 ; i<colonne+3 ; i++){
+		    document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(i)+"' data-column='column"+(i)+"'>"+modello.attributi[i-3]+"</th>";
 			}
-			for(var i=0,j=0; i<quantita_dati ; i++){
+			for(var i=0,j=0,k=0; i<quantita_dati ; i++,k++){ //i per i dati,j per le righe, k per le celle
 				if(i%colonne==0){
-					var riga = tabellaHTML.insertRow(tabellaHTML.rows.length);
-					riga.id = "riga"+id+""+j;
-					document.getElementById("riga"+id+""+j).setAttribute("class", "row100 body");
-					var cella = riga.insertCell(0);
-					cella.id="cella"+id+"M"+((i)+1);
-					var bottone_modifica = "<button onclick='modifica_riga(this.value)' value='"+"riga"+id+""+j+"'>Modifica la Riga</button>";
-					cella.innerHTML+=(bottone_modifica);
-					cella = riga.insertCell(1);
-					cella.id="cella"+id+"E"+((i)+1);
-					var bottone_elimina = "<button onclick='elimina_riga(this.value)' value='"+"riga"+id+""+j+"'>Elimina la Riga</button>";
-					cella.innerHTML+=(bottone_elimina);
-					document.getElementById("cella"+id+"M"+((i)+1)).setAttribute("class", "cell100 column"+(colonne+1));
-					document.getElementById("cella"+id+"E"+((i)+1)).setAttribute("class", "cell100 column"+(colonne+2));
+					k=0;
+					var riga = tabellaHTML.insertRow(tabellaHTML.rows.length); //Inserisce una riga nella tabella considerata
+					riga.id = id+"riga"+j; //Assegna un id alla riga, che è formato da id_tabella+"riga"+numero_riga
+					document.getElementById(id+"riga"+""+j).setAttribute("class", "row100 body");
+					var cella = riga.insertCell(k); //Inserisco la prima cella
+					cella.id=j+"cella"+id+"M"+(k); //Assegno l'id alla cella modifica che è indice riga+"cella"+id_tabella+"M"+numero_cella
+					var bottone_modifica = "<button onclick='modifica_riga(this.value)' value='"+id+"riga"+j+"'>Modifica la Riga</button>"; //Il value corrisponde all'id della riga
+					cella.innerHTML+=(bottone_modifica); //Aggiungo il bottone alla tabella
+					document.getElementById(j+"cella"+id+"M"+k).setAttribute("class", "cell100 column"+(k+1));
+					k++; //Aumento poichè ho aggiunto la cella del modifica
+					cella = riga.insertCell(k); //Inserisco la seconda cella
+					cella.id=j+"cella"+id+"E"+(k); //Assegno l'id alla cella elimina che è indice riga+"cella"+id_tabella+"E"+numero_cella
+					var bottone_elimina = "<button onclick='elimina_riga(this.value)' value='"+id+"riga"+j+"'>Elimina la Riga</button>"; //Il value corrisponde all'id della riga
+					cella.innerHTML+=(bottone_elimina); //Aggiungo il bottone alla tabella
+					document.getElementById(j+"cella"+id+"E"+k).setAttribute("class", "cell100 column"+(k+1));
+					k++;
 					j++;
 				}
-				var cella = riga.insertCell((i%colonne)+2);
-				cella.id="cella"+id+((i)+1);
+				var cella = riga.insertCell(k);
+				cella.id=id+"cella"+(i+1); //Inserimento di una cella con il dato; l'id è id_tabella+"ccella"+indice cella
 				var dato = tabella.valori[i];
 				cella.innerHTML+=(dato);
-				document.getElementById("cella"+id+((i)+1)).setAttribute("class", "cell100 column"+((i%colonne)+1));
+				document.getElementById(id+"cella"+(i+1)).setAttribute("class", "cell100 column"+(k+1));
 			}
 		}
 	}catch(error){
