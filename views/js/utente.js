@@ -53,13 +53,13 @@ function inserisci_utente() {
         dataType: 'json'
       }).done(function (esito) {
         if (esito) {
-          window.location.replace("/tabella");
+          window.location.replace("/");
 		} else {
-          window.location.replace("/error1");
+          window.location.replace("/error?type=1");
 		}
       });
     } else {
-      window.location.replace("/error2");
+      window.location.replace("/error?type=2");
 	}
   });
 }
