@@ -78,6 +78,10 @@ module.exports = function(app)
         res.render('tabella.html');
     });
 
+    app.get('/modello', function(req,res) {
+        res.render('modello.html');
+    });
+
     app.get('/login', function(req,res) {
     res.render('login.html');
     });
