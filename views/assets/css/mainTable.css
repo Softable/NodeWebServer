@@ -46,6 +46,9 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
+.icone:hover {
+    cursor: pointer;
+}
 
 .limiter {
   width: 100%;
@@ -54,7 +57,7 @@
 .container-table100 {
   width: 100%;
   min-height: 100vh;
-  background-image: url("../../img/TablesWallpaper.jpg");
+  background-image: url("../images/TablesWallpaper.jpg");
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -67,13 +70,15 @@
 }
 
 .wrap-table100 {
-  width: 1170px;
+  min-width: 90%;
 }
 
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 .table100 {
   background-color: #fff;
+  margin-right: 2%;
+  margin-left: 2%;
 }
 
 table {
@@ -90,14 +95,14 @@ th, td {
   align-items: center;
   text-align:center;
   padding-left: 1%;
-  width: 20%;
+  width: 10%;
   height: 10%;
 }
 .columnE {
   align-items: center;
   text-align:center;
   padding-left: 1%;
-  width: 20%;
+  width: 10%;
   height: 10%;
 }
 .column {
