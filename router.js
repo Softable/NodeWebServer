@@ -34,8 +34,8 @@ module.exports = function(app)
         res.render('modello/collezione.html');
     });
 
-    app.get('/modello/inserisci', function(req,res) {
-        res.render('modello/inserisci.html');
+    app.get('/modello/aggiungi', function(req,res) {
+        res.render('aggiungiModello.html');
     });
 
     app.get('/modello/richiedi', function(req,res) {

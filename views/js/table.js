@@ -1,5 +1,5 @@
 function visualizza_tabelle_utente(){
-	var username = leggiCookie('utente');
+	var username = leggiCookie('username');
 	if(username=="null")
 		alert("Accedi dalla pagina di login!");
 	else{
