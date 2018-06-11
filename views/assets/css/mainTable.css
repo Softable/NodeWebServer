@@ -1,8 +1,7 @@
 /*[ Scroll bar ]*/
 .js-pscroll {
   position: relative;
-  overflow: auto;
-  white-space: nowrap;
+  overflow: hidden;
 }
 
 .table100 .ps__rail-y {
@@ -19,7 +18,7 @@
   background-color: #ebebeb;
   border-radius: 5px;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 30px);
   left: 0;
   top: 15px;
 }
@@ -51,7 +50,8 @@
 }
 
 .limiter {
-  width: 100%;
+  width: 1366px;
+  margin: 0 auto;
 }
 
 .container-table100 {
@@ -66,7 +66,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: 5%;
+  padding: 33px 30px;
 }
 
 .wrap-table100 {
@@ -83,7 +83,6 @@
 
 table {
   width: 100%;
-
 }
 
 th, td {
@@ -105,9 +104,20 @@ th, td {
   width: 10%;
   height: 10%;
 }
-.column {
-  align-items: center;
-  text-align:center;
+
+.column3 {
+  width: 20%;
+  text-align: center;
+}
+
+.column4 {
+  width: 20%;
+  text-align: center;
+}
+
+.column5 {
+  width: 20%;
+  text-align: center;
 }
 
 .table100-head th {

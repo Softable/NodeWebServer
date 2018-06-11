@@ -261,12 +261,12 @@ caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: #868e96;
-  text-align: center;
+  text-align: left;
   caption-side: bottom;
 }
 
 th {
-  text-align: center;
+  text-align: left;
 }
 
 label {
@@ -2580,7 +2580,7 @@ tbody.collapse.show {
   margin: 0.125rem 0 0;
   font-size: 1rem;
   color: #212529;
-  text-align: center;
+  text-align: left;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
@@ -4727,7 +4727,7 @@ button.close {
   font-style: normal;
   font-weight: normal;
   line-height: 1.5;
-  text-align: center;
+  text-align: left;
   text-align: start;
   text-decoration: none;
   text-shadow: none;
@@ -4841,7 +4841,7 @@ button.close {
   font-style: normal;
   font-weight: normal;
   line-height: 1.5;
-  text-align: center;
+  text-align: left;
   text-align: start;
   text-decoration: none;
   text-shadow: none;
@@ -8012,7 +8012,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 
 .text-left {
-  text-align: center !important;
+  text-align: left !important;
 }
 
 .text-right {
@@ -8025,7 +8025,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 @media (min-width: 576px) {
   .text-sm-left {
-    text-align: center !important;
+    text-align: left !important;
   }
   .text-sm-right {
     text-align: right !important;
@@ -8037,7 +8037,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 @media (min-width: 768px) {
   .text-md-left {
-    text-align: center !important;
+    text-align: left !important;
   }
   .text-md-right {
     text-align: right !important;
@@ -8049,7 +8049,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 @media (min-width: 992px) {
   .text-lg-left {
-    text-align: center !important;
+    text-align: left !important;
   }
   .text-lg-right {
     text-align: right !important;
@@ -8061,7 +8061,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 @media (min-width: 1200px) {
   .text-xl-left {
-    text-align: center !important;
+    text-align: left !important;
   }
   .text-xl-right {
     text-align: right !important;
