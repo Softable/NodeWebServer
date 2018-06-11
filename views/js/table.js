@@ -22,7 +22,7 @@ function inserisci_tabella_inPagina(id,ver){
 			var id_modello=tabella.id_modelloTabella;
 			var modello=richiedi_modello(id_modello);
 			var colonne=modello.attributi.length;
-			$("#tables-container").append("<div style='display: flex; align-items: center; justify-content: center;' id=aggiungi"+id+"><button id='"+id+"aggiungi' onclick=aggiungi_riga('"+id+"') >Aggiungi una nuova riga</button></div><div class='table100 ver"+ver+" m-b-110'><table class='js-pscroll' id='tabella"+id+"'><thead class='table100-head'><tr class='row100 head' id='attributi"+id+"'></tr></thead><tbody class='table100-body' id='dati"+id+"'></tbody></table></div>");
+			$("#tables-container").append("<div style='display: flex; align-items: center; justify-content: center;' id=aggiungi"+id+"><button style='margin-bottom:10px;' id='"+id+"aggiungi' onclick=aggiungi_riga('"+id+"') >Aggiungi una nuova riga</button></div><div class='table100 ver"+ver+" m-b-110'><table class='js-pscroll' id='tabella"+id+"'><thead class='table100-head'><tr class='row100 head' id='attributi"+id+"'></tr></thead><tbody class='table100-body' id='dati"+id+"'></tbody></table></div>");
 			var tabellaHTML = document.getElementById("tabella"+id).getElementsByTagName("tbody")[0];
 			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 columnM'>Modifica</th>";
 			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 columnE'><button onclick='elimina_tabella(this.value)' value='"+id+"'>Elimina Tutto</button></th>";
@@ -79,7 +79,7 @@ function leggiCookie(name) {
 function aggiungi_riga(id_tabella){
 	var tabella = richiedi_tabella(id_tabella);
 	var attributi = richiedi_modello(tabella.id_modelloTabella).attributi;
-	document.getElementById("aggiungi"+id_tabella).innerHTML = "<button id='"+id_tabella+"aggiungiConferma' onclick=conferma_inserimento('"+id_tabella+"') >Conferma l'inserimento</button>";
+	document.getElementById("aggiungi"+id_tabella).innerHTML = "<button id='"+id_tabella+"aggiungiConferma' style='margin-bottom:10px;' onclick=conferma_inserimento('"+id_tabella+"') >Conferma l'inserimento</button>";
 	attributi.forEach(function(colonna){
 		document.getElementById("aggiungi"+id_tabella).innerHTML+="<input id='"+colonna+"Input' value='"+colonna+"'></input>";
 	});
