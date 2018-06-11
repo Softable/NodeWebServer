@@ -1,18 +1,15 @@
 function visualizza_tabelle_utente(){
-	var username = leggiCookie('utente');
-	username = "AlMax";
+	var username = leggiCookie('username');
 	if(username=="null")
 		alert("Accedi dalla pagina di login!");
 	else{
-		var ver=0;
 		tabelle_utente(username).forEach(function(tabella) {
-			ver++;
-  		inserisci_tabella_inPagina(tabella,ver);
+  		inserisci_tabella_inPagina(tabella);
 		});
 	}
 }
 
-function inserisci_tabella_inPagina(id,ver){
+function inserisci_tabella_inPagina(id){
 	try{
 		if (document.getElementById("tabella"+id)) {
 	    alert("La tabella già presente in pagina!");
@@ -27,7 +24,7 @@ function inserisci_tabella_inPagina(id,ver){
 			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 columnM'><img src='assets/images/modificaZona.png' style='width:35%;'></th>";
 			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 columnE'><img class='icone' src='assets/images/eliminaTutto.png' title='Elimina tutta la Tabella' onclick='elimina_tabella(this.id)' id='"+id+"' style='width:35%;'></th>";
 			for(var i=3 ; i<colonne+3 ; i++){
-		    document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column'>"+modello.attributi[i-3]+"</th>";
+		    document.getElementById('attributi'+id).innerHTML+="<th class='cell100 column"+(i)+"' data-column='column"+(i)+"'>"+modello.attributi[i-3]+"</th>";
 			}
 			for(var i=0,j=0,k=0; i<quantita_dati ; i++,k++){ //i per i dati,j per le righe, k per le celle
 				if(i%colonne==0){
@@ -39,13 +36,13 @@ function inserisci_tabella_inPagina(id,ver){
 					cella.id=j+"cella"+id+"M"+(k); //Assegno l'id alla cella modifica che è indice riga+"cella"+id_tabella+"M"+numero_cella
 					var bottone_modifica = "<img class='icone' src='assets/images/modifica.png' title='Modifica la Riga' onclick='modifica_riga(this.id)' id='"+id+"riga"+j+"' style='width:35%;'>"; //Il value corrisponde all'id della riga
 					cella.innerHTML+=(bottone_modifica); //Aggiungo il bottone alla tabella
-					document.getElementById(j+"cella"+id+"M"+k).setAttribute("class", "cell100 columnM");
+					document.getElementById(j+"cella"+id+"M"+k).setAttribute("class", "cell100 column"+(k+1));
 					k++; //Aumento poichè ho aggiunto la cella del modifica
 					cella = riga.insertCell(k); //Inserisco la seconda cella
 					cella.id=j+"cella"+id+"E"+(k); //Assegno l'id alla cella elimina che è indice riga+"cella"+id_tabella+"E"+numero_cella
 					var bottone_elimina = "<img class='icone' src='assets/images/elimina.png' title='Elimina la Riga' onclick='elimina_riga(this.id)' id='"+id+"riga"+j+"' style='width:35%;'>";//Il value corrisponde all'id della riga
 					cella.innerHTML+=(bottone_elimina); //Aggiungo il bottone alla tabella
-					document.getElementById(j+"cella"+id+"E"+k).setAttribute("class", "cell100 columnE");
+					document.getElementById(j+"cella"+id+"E"+k).setAttribute("class", "cell100 column"+(k+1));
 					k++;
 					j++;
 				}
@@ -53,7 +50,7 @@ function inserisci_tabella_inPagina(id,ver){
 				cella.id=id+"cella"+(i+1); //Inserimento di una cella con il dato; l'id è id_tabella+"ccella"+indice cella
 				var dato = tabella.valori[i];
 				cella.innerHTML+=(dato);
-				document.getElementById(id+"cella"+(i+1)).setAttribute("class", "cell100 column");
+				document.getElementById(id+"cella"+(i+1)).setAttribute("class", "cell100 column"+(k+1));
 			}
 		}
 	}catch(error){
@@ -103,7 +100,7 @@ function modifica_riga(id_riga){
 	var cella_modifica = celle[0];
 	cella_modifica.innerHTML = "<img class='icone' src='assets/images/conferma.png' title='Conferma Eliminazione' onclick=conferma_modifiche('"+id_riga+"') id='"+cella_modifica.id+"' style='width:35%;'>";
 	for (var i=2; i<celle.length ; i++){
-		celle[i].innerHTML = "<input style='width:40%;' id='"+celle[i].id+"in' value='"+celle[i].innerHTML+"'></input>";
+		celle[i].innerHTML = "<input id='"+celle[i].id+"in' value='"+celle[i].innerHTML+"'></input>";
 	}
 }
 
@@ -169,8 +166,6 @@ function elimina_tabella(id_tabella) {
     });
 		var tabella = document.getElementById("tabella"+id_tabella);
 		tabella.parentNode.removeChild(tabella);
-		var button = document.getElementById("aggiungi"+id_tabella);
-		button.parentNode.removeChild(button);
 	}
 }
 

@@ -1,30 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tabella</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="js/table.js"></script>
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-    <!--[[   CSS   ]]-->
-    <!-- CSS del template -->
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <!-- CSS della tabella -->
-    <link rel="stylesheet" href="assets/css/mainTable.css" />
-    <link rel="stylesheet" href="assets/css/utilTable.css" />
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="vendor/animate/animate.css" />
-    <link rel="stylesheet" href="vendor/select2/select2.min.css" />
-    <link rel="stylesheet" href="vendor/perfect-scrollbar/perfect-scrollbar.css" />
-  </head>
-  <body onload="visualizza_tabelle_utente()">
-    <div class="limiter">
-    	<div class="container-table100">
-        <div class="wrap-table100" id="tables-container"></div>
-      </div>
-    </div>
-  </body>
+	<head>
+		<title>Tabella</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!--[[   CSS   ]]-->
+		<!-- CSS del template -->
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<!-- CSS della tabella -->
+		<link rel="stylesheet" href="../assets/css/mainTable.css" />
+		<link rel="stylesheet" href="../assets/css/utilTable.css" />
+		<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../vendor/animate/animate.css" />
+		<link rel="stylesheet" href="../vendor/select2/select2.min.css" />
+		<link rel="stylesheet" href="../vendor/perfect-scrollbar/perfect-scrollbar.css" />
+
+
+		<!--[[   SCRIPT   ]]-->
+		<!-- Script del template Helios -->
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.dropotron.min.js"></script>
+		<script src="../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../assets/js/jquery.onvisible.min.js"></script>
+		<script src="../assets/js/skel.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+		<!-- Script vari -->
+		<script src="../js/utente.js"></script>
+		<script src="../js/tabella.js"></script>
+		<script src="../js/table.js"></script>
+	</head>
+	
+	<body onload="visualizza_tabelle_utente()">
+		<div id="header"></div>
+		<nav id="nav">
+			<ul>
+				<li>
+					<a href="#">Modelli</a>
+					<ul>
+						<li><a href="../modello">I tuoi modelli</a></li>
+						<li><a href="../modello/aggiungi">Aggiungi un modello</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Tabelle</a>
+					<ul>
+						<li><a href="../tabella">Le tue tabelle</a></li>
+						<li><a href="../tabella/richiedi">Aggiungi una tabella</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="../">
+						<img src="../assets/images/logo.png" id="logo_softable" alt="logo_softable">
+					</a>
+				</li>
+				<li id="li_log"><a href="../"></a></li>
+			</ul>
+		</nav>
+
+		<!-- SCRIPT PER LA LETTURA DEL COOKIE E LA SCRITTURA DELL'USERNAME NELLA BARRA IN ALTO -->
+		<script>
+			if (leggiCookie('username') != "null") {
+				document.getElementById('li_log').innerHTML = "<a href='/'>" + leggiCookie('username') + "</a><ul><li><a href='/' onclick='esci();'>Esci</a></li></ul>";
+			} else {
+				window.location('/error');
+			}
+		</script>
+	</body>
 </html>
