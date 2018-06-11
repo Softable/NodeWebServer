@@ -1,7 +1,8 @@
 /*[ Scroll bar ]*/
 .js-pscroll {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .table100 .ps__rail-y {
@@ -18,7 +19,7 @@
   background-color: #ebebeb;
   border-radius: 5px;
   width: 100%;
-  height: calc(100% - 30px);
+  height: 100%;
   left: 0;
   top: 15px;
 }
@@ -79,6 +80,7 @@
 
 table {
   width: 100%;
+
 }
 
 th, td {
@@ -86,25 +88,23 @@ th, td {
   padding-right: 10px;
 }
 
-.column1 {
-  width: 33%;
-  padding-left: 40px;
+.columnM {
+  align-items: center;
+  text-align:center;
+  padding-left: 1%;
+  width: 20%;
+  height: 10%;
 }
-
-.column2 {
-  width: 13%;
+.columnE {
+  align-items: center;
+  text-align:center;
+  padding-left: 1%;
+  width: 20%;
+  height: 10%;
 }
-
-.column3 {
-  width: 22%;
-}
-
-.column4 {
-  width: 19%;
-}
-
-.column5 {
-  width: 13%;
+.column {
+  align-items: center;
+  text-align:center;
 }
 
 .table100-head th {
@@ -197,7 +197,7 @@ th, td {
 }
 
 .table100.ver2 th {
-  font-family: 'Source Sans Pro', sans-serif !important;  
+  font-family: 'Source Sans Pro', sans-serif !important;
   font-size: 18px;
   color: #fa4251;
   line-height: 1.4;
@@ -378,14 +378,14 @@ th, td {
 }
 
 .table100.ver5 .table100-body tr {
-  overflow: hidden; 
+  overflow: hidden;
   border-bottom: 10px solid #fff;
   border-radius: 10px;
 }
 
-.table100.ver5 .table100-body table { 
-  border-collapse: separate; 
-  border-spacing: 0 10px; 
+.table100.ver5 .table100-body table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
 }
 .table100.ver5 .table100-body td {
     border: solid 1px transparent;
@@ -395,13 +395,13 @@ th, td {
 }
 .table100.ver5 .table100-body td:first-child {
     border-left-style: solid;
-    border-top-left-radius: 10px; 
+    border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 .table100.ver5 .table100-body td:last-child {
     border-right-style: solid;
-    border-bottom-right-radius: 10px; 
-    border-top-right-radius: 10px; 
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .table100.ver5 tr:hover td {

@@ -16,7 +16,7 @@
 		border: 0;
 		font-size: 100%;
 		font: inherit;
-		vertical-align: baseline;
+		/*vertical-align: baseline;*/
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -55,7 +55,7 @@
 		padding: 0 0 0 0;
 	}
 
-	
+
 /* Box Model */
 
 	/**, *:before, *:after {
@@ -2065,11 +2065,11 @@
 	#header {
 		position: relative;
 		/*height: 100%;*/
-		background-image: url("../images/1.png");
+		/*background-image: url("../images/1.png");
 		background-size: cover;
 		background-position: center center;
-		background-attachment: fixed;
-		color: #fff;
+		background-attachment: fixed; */
+		background-color: black;
 		text-align: center;
 		padding: 7.5em 0 2em 0;
 		cursor: default;
@@ -2248,7 +2248,7 @@
 		padding: 1em 1.25em 1em 1.25em;
 		line-height: 1em;
 		height: auto;
-		text-align: left;
+		text-align: center;
 		border-radius: 0.5em;
 		box-shadow: 0 0.15em 0.25em 0 rgba(0, 0, 0, 0.25);
 		min-width: 12em;

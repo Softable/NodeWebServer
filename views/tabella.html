@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Tabella</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      <script src="js/table.js"></script>
-    	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    	<script src="vendor/bootstrap/js/popper.js"></script>
-    	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    	<script src="vendor/select2/select2.min.js"></script>
-
-      <!--[[   CSS   ]]-->
+    <title>Tabella</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/table.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--[[   CSS   ]]-->
     <!-- CSS del template -->
-      <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
     <!-- CSS della tabella -->
     <link rel="stylesheet" href="assets/css/mainTable.css" />
     <link rel="stylesheet" href="assets/css/utilTable.css" />
@@ -21,9 +19,12 @@
     <link rel="stylesheet" href="vendor/animate/animate.css" />
     <link rel="stylesheet" href="vendor/select2/select2.min.css" />
     <link rel="stylesheet" href="vendor/perfect-scrollbar/perfect-scrollbar.css" />
-
   </head>
   <body onload="visualizza_tabelle_utente()">
-    	<div id="header"></div>
+    <div class="limiter">
+    	<div class="container-table100">
+        <div class="wrap-table100" id="tables-container"></div>
+      </div>
+    </div>
   </body>
 </html>
