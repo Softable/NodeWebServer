@@ -34,59 +34,38 @@
 		body {
 			background-color: black;
 		}
-		
-		#modelli {
-			margin-top: 8%;
-		}
-		
-		.button {
-			float: right;
-			margin: 1.5% 5% 0 2%;
-		}
-		
 	</style>
 </head>
 	
-<body class="homepage" onLoad="visualizzaModelliInPagina(leggiCookie('username'));">
+<body class="homepage">
 	<!-- DIV DELLA HOME  -->
 	<div id="page-wrapper">
-		<p id="test"></p>
 		<!-- BARRA DI NAVIGAZIONE -->
 		<nav id="nav">
 			<ul>
-				<li>
-					<a href="#">Modelli</a>
-					<ul>
-						<li><a href="../modello">I tuoi modelli</a></li>
-						<li><a href="../modello/aggiungi">Aggiungi un modello</a></li>
-					</ul>
-				</li>
+				<li><a href="index.html">Home</a></li>
 				<li>
 					<a href="#">Tabelle</a>
 					<ul>
-						<li><a href="../tabella">Le tue tabelle</a></li>
-						<li><a href="../tabella/richiedi">Aggiungi una tabella</a></li>
+						<li><a href="#">Lorem ipsum dolor</a></li>
+						<li><a href="#">Magna phasellus</a></li>
+						<li><a href="#">Etiam dolore nisl</a></li>
+						<li>
+						<a href="#">And a submenu &hellip;</a>
+						<ul>
+							<li><a href="#">Lorem ipsum dolor</a></li>
+							<li><a href="#">Phasellus consequat</a></li>
+							<li><a href="#">Magna phasellus</a></li>
+							<li><a href="#">Etiam dolore nisl</a></li>
+						</ul>
+						</li>
+						<li><a href="#">Veroeros feugiat</a></li>
 					</ul>
 				</li>
-				<li>
-					<a href="../">
-						<img src="../assets/images/logo.png" id="logo_softable" alt="logo_softable">
-					</a>
-				</li>
-				<li id="li_log"><a href="../"></a></li>
+				<li><a href="index.html"><img src="../assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
+				<li id="li_log"><a href="/" onclick="document.getElementById('li_log').innerHTML=leggiCookie('username');"  style="width:auto;"></a></li>
 			</ul>
 		</nav>
-		
-		<div id="modelli"></div>
- 	</div>
-	
-	<!-- SCRIPT PER LA LETTURA DEL COOKIE E LA SCRITTURA DELL'USERNAME NELLA BARRA IN ALTO -->
-	<script>
-		if (leggiCookie('username') != "null") {
-			document.getElementById('li_log').innerHTML = "<a href='/'>" + leggiCookie('username') + "</a><ul><li><a href='/' onclick='esci();'>Esci</a></li></ul>";
-		} else {
-			window.location('/error');
-		}
-	</script>
+	</div>
 </body>
 </html>
