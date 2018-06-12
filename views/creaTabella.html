@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crea una Tabella</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/newTable.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--[[   CSS   ]]-->
+    <!-- CSS del template -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- CSS della tabella -->
+    <link rel="stylesheet" href="assets/css/creaTabella.css">
+    <link rel="stylesheet" href="assets/css/utilTable.css" />
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="vendor/animate/animate.css" />
+    <link rel="stylesheet" href="vendor/select2/select2.min.css" />
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/perfect-scrollbar.css" />
+  </head>
+  <body onload="genera_tabella();">
+    <div id="limiter" class="limiter">
+      <!-- BARRA DI NAVIGAZIONE -->
+      <div>
+    		<nav id="nav">
+    			<ul>
+    				<li><a href="/">Home</a></li>
+    				<li>
+    					<a href="#">Tabelle</a>
+    					<ul>
+    						<li><a href="/modello">I tuoi modelli</a></li>
+    						<li><a href="/tabella">Le tue tabelle</a></li>
+    					</ul>
+    				</li>
+    				<li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
+    				<li id="li_log"><a href="#" onclick="document.getElementById('login_div').style.display='block'" style="width:auto;">Accedi</a></li>
+    				<li id="li_reg"><a href="#" onclick="document.getElementById('register_div').style.display='block'" style="width:auto;">Registrati</a></li>
+    			</ul>
+    		</nav>
+      </div>
+
+      <div class="table-users" id="divTabella"></div>
+
+    </div>
+  </body>
+</html>

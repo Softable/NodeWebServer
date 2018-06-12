@@ -106,7 +106,7 @@ function accedi_utente() {
 	utente = richiedi_utente(username);
 
 	if (utente.password == password) {
-		creaCookie('username', document.getElementById('username').value, 10);  
+		creaCookie('username', document.getElementById('username').value);
 		window.location.replace("/");
 	} else {
 		window.location.replace("/error");
@@ -114,7 +114,8 @@ function accedi_utente() {
 }
 
 function creaCookie(name,value) {
-	document.cookie = name + "=" + value + "; path=/";	
+	document.cookie = name + "=" + value + "; path=/";
+	alert(name+""+value);
 }
 
 function leggiCookie(name) {
@@ -130,12 +131,9 @@ function leggiCookie(name) {
 		}
 	}
 	return 'null';
-}	
+}
 
 function esci() {
 	document.cookie = "username=null;";
 	window.location("../");
 }
-
-
-

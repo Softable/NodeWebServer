@@ -66,11 +66,11 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: 5%;
+  padding-top: 8%;
 }
 
 .wrap-table100 {
-  min-width: 90%;
+  padding-top: 20px;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -83,7 +83,6 @@
 
 table {
   width: 100%;
-
 }
 
 th, td {
@@ -295,9 +294,7 @@ th, td {
 
 /*==================================================================
 [ Ver4 ]*/
-.table100.ver4 {
-  margin-right: -20px;
-}
+
 
 .table100.ver4 .table100-head {
   padding-right: 20px;
@@ -353,9 +350,7 @@ th, td {
 
 /*==================================================================
 [ Ver5 ]*/
-.table100.ver5 {
-  margin-right: -30px;
-}
+
 
 .table100.ver5 .table100-head {
   padding-right: 30px;

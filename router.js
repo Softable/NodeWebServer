@@ -78,6 +78,10 @@ module.exports = function(app)
         res.render('tabella.html');
     });
 
+    app.get('/creaTabella', function(req,res) {
+        res.render('creaTabella.html');
+    });
+
     app.get('/modello', function(req,res) {
         res.render('modello.html');
     });
