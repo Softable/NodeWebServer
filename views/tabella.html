@@ -22,6 +22,24 @@
   </head>
   <body onload="visualizza_tabelle_utente()">
     <div class="limiter">
+      <!-- BARRA DI NAVIGAZIONE -->
+      <div>
+    		<nav id="nav">
+    			<ul>
+    				<li><a href="/">Home</a></li>
+    				<li>
+    					<a href="#">Tabelle</a>
+    					<ul>
+    						<li><a href="/modello">I tuoi modelli</a></li>
+    						<li><a href="/tabella">Le tue tabelle</a></li>
+    					</ul>
+    				</li>
+    				<li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
+    				<li id="li_log"><a href="#" onclick="document.getElementById('login_div').style.display='block'" style="width:auto;">Accedi</a></li>
+    				<li id="li_reg"><a href="#" onclick="document.getElementById('register_div').style.display='block'" style="width:auto;">Registrati</a></li>
+    			</ul>
+    		</nav>
+      </div>
     	<div class="container-table100">
         <div class="wrap-table100" id="tables-container"></div>
       </div>

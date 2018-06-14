@@ -1,13 +1,12 @@
 function visualizza_tabelle_utente(){
-	var username = leggiCookie('utente');
-	username = "AlMax";
+	var username = leggiCookie('username');
 	if(username=="null")
 		alert("Accedi dalla pagina di login!");
 	else{
 		var ver=0;
 		tabelle_utente(username).forEach(function(tabella) {
 			ver++;
-  		inserisci_tabella_inPagina(tabella,ver);
+  		inserisci_tabella_inPagina(tabella,(ver%5)+1);
 		});
 	}
 }
@@ -22,7 +21,7 @@ function inserisci_tabella_inPagina(id,ver){
 			var id_modello=tabella.id_modelloTabella;
 			var modello=richiedi_modello(id_modello);
 			var colonne=modello.attributi.length;
-			$("#tables-container").append("<div style='display: flex; align-items: center; justify-content: center;' id=aggiungi"+id+"><img class='icone' src='assets/images/aggiungi.png' title='Aggiungi una nuova Riga' style='margin-bottom:10px; width:4%;' id='"+id+"aggiungi' onclick=aggiungi_riga('"+id+"') ></div><div class='table100 ver"+ver+" m-b-110'><table class='js-pscroll' id='tabella"+id+"'><thead class='table100-head'><tr class='row100 head' id='attributi"+id+"'></tr></thead><tbody class='table100-body' id='dati"+id+"'></tbody></table></div>");
+			$("#tables-container").append("<div style='display: flex; align-items: center; justify-content: center;' id=aggiungi"+id+"><img class='icone' src='assets/images/aggiungi.png' title='Aggiungi una nuova Riga' style='margin-bottom:10px; width:4%;' id='"+id+"aggiungi' onclick=aggiungi_riga('"+id+"') ></div><div class='table100 ver"+ver+" m-b-110'><table class='js-pscroll' id='tabella"+id+"'><thead class='table100-head js-pscroll'><tr class='row100 head' id='attributi"+id+"'></tr></thead><tbody class='table100-body js-pscroll' id='dati"+id+"'></tbody></table></div>");
 			var tabellaHTML = document.getElementById("tabella"+id).getElementsByTagName("tbody")[0];
 			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 columnM'><img src='assets/images/modificaZona.png' style='width:35%;'></th>";
 			document.getElementById('attributi'+id).innerHTML+="<th class='cell100 columnE'><img class='icone' src='assets/images/eliminaTutto.png' title='Elimina tutta la Tabella' onclick='elimina_tabella(this.id)' id='"+id+"' style='width:35%;'></th>";
@@ -79,7 +78,7 @@ function leggiCookie(name) {
 function aggiungi_riga(id_tabella){
 	var tabella = richiedi_tabella(id_tabella);
 	var attributi = richiedi_modello(tabella.id_modelloTabella).attributi;
-	document.getElementById("aggiungi"+id_tabella).innerHTML = "<img class='icone' src='assets/images/confermaAggiungi.png' title='Aggiungi e Salva i nuovi Dati' style='margin-bottom:10px; width:4%;' id='"+id_tabella+"aggiungiConferma' onclick=conferma_inserimento('"+id_tabella+"')>";
+	document.getElementById("aggiungi"+id_tabella).innerHTML = "<img class='icone' src='assets/images/confermaAggiungi.png' title='Aggiungi e Salva i nuovi Dati' style='margin-bottom:10px; width:4%;' id='"+id_tabella+"aggiungiConferma' onclick=conferma_inserimento('"+id_tabella+"')><img onclick=location.reload() class='icone' src='assets/images/annulla.png' title='Anulla' style='margin-bottom:10px; width:3%;'>";
 	attributi.forEach(function(colonna){
 		document.getElementById("aggiungi"+id_tabella).innerHTML+="<input id='"+colonna+"Input' value='"+colonna+"'></input>";
 	});
