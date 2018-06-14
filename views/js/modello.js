@@ -45,26 +45,29 @@ function richiedi_modello(id_modello){
 }
 
 function inserisci_modello() {
-    $(document).ready(function() {
-        var modello = {}, attributi = [];
-        for (var i = 0; i < document.getElementsByName('att').length; i++) {
-            attributi[i] = document.getElementsByName('att')[i].value;
+	var modello = {}, attributi = [], elemento, username;
+	username = document.getElementById('username').value;
+	for (var i = 0; i < document.getElementsByClassName('attributi').length; i++) {
+		elemento = document.getElementsByClassName('attributi')[i].value;
+		if (elemento !== null && elemento !== '' && elemento !== 'null') {
+			attributi.push(elemento);	
 		}
-        modello = {
-          "id_modello" : 0,
-          "nome_modello" : document.getElementById('nome').value,
-          "attributi" : attributi
-        };
-        $.ajax({
-            url: "http://localhost:8080/modello/inserisci",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(modello),
-            dataType: "json"
-        }).done(function (esito) {
-            alert("Esito inserimento: "+esito);
-        });
-    });
+	}
+	modello = {
+		"id_modello" : 0,
+		"nome_modello" : document.getElementById('nome_modello').value,
+		"username" : username,
+		"attributi" : attributi
+	};
+	$.ajax({
+		url: "http://localhost:8080/modello/inserisci",
+		type: "POST",
+		contentType: "application/json",
+		data: JSON.stringify(modello),
+		dataType: "json"
+	}).done(function () {
+		window.location.href = '../modello';
+	});
 }
 
 function modifica_modello() {
@@ -85,7 +88,11 @@ function modifica_modello() {
 			data: JSON.stringify(modello),
 			dataType: "json"
 		}).done(function (esito) {
-			alert("Esito modifica: "+esito);
+			if (esito) {
+				window.location("../modello");
+			} else {
+				window.location("../error");
+			}
 		});
 	});
 }
@@ -97,10 +104,9 @@ function elimina_modello(id_modello) {
 		$.ajax({
 			url: "http://localhost:8080/modello/elimina" + "/" + id_modello,
 			type: "GET"
-		}).done(function (esito) {
-			alert("Esito eliminazione: " + esito);
+		}).done(function () {
+			window.location.href = '../modello';
 		});
-		window.location("../modello");
 	}
 }
 
@@ -132,7 +138,8 @@ function mostraModello(modello) {
 		tabella += "<td class='cell100 column" + (cont++) + "'>" + modello.attributi[i] + "</td>";
 	}
 	tabella += "</tr></tbody></table></div></div>";
-	$("#modelli").append("<button class='button' type='submit' onClick='elimina_modello(" + modello.id_modello + ");'>Elimina</button>");
+	$("#modelli").append("<button class='button' type='submit'>Crea Tabella</button>");
+	$("#modelli").append("<button class='button' type='submit' style='clear:right; margin-top: 1.2%;' onClick='elimina_modello(" + modello.id_modello + ");'>Elimina</button>");
 	$("#modelli").append(tabella);
 	
 }

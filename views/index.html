@@ -34,9 +34,9 @@
 	<style>		
 		/* Full-width input fields */
 		input[type=text], input[type=password] {
-			width: 100%;
+			width: 97%;
 			padding: 12px 20px;
-			margin: 8px 0;
+			margin: 8px 0 0 0;
 			display: inline-block;
 			border: 1px solid #ccc;
 			border-radius: 10px;
@@ -53,10 +53,10 @@
 		button {
 			color: white;
 			padding: 14px 20px;
-			margin: 8px 0;
+			margin: 1% 0 0 0;
 			border: none;
 			cursor: pointer;
-			width: 100%;
+			width: 97%;
 		}
 
 		button:hover {
@@ -333,21 +333,18 @@
 		<!-- BARRA DI NAVIGAZIONE -->
 		<nav id="nav">
 			<ul>
-				<li><a href="/">Home</a></li>
+				<li>
+					<a href="#">Modelli</a>
+					<ul>
+						<li><a href="../modello">I tuoi modelli</a></li>
+						<li><a href="../modello/aggiungi">Aggiungi un modello</a></li>
+					</ul>
+				</li>
 				<li>
 					<a href="#">Tabelle</a>
 					<ul>
-						<li><a href="/modello">I tuoi modelli</a></li>
-						<li><a href="/tabella">Le tue tabelle</a></li>
-						<!--li>
-							<a href="#">Esempio di sottomenu</a>
-							<ul>
-								<li><a href="#">Lorem ipsum dolor</a></li>
-								<li><a href="#">Phasellus consequat</a></li>
-								<li><a href="#">Magna phasellus</a></li>
-								<li><a href="#">Etiam dolore nisl</a></li>
-							</ul>
-						</li-->
+						<li><a href="../tabella">Le tue tabelle</a></li>
+						<li><a href="../tabella/richiedi">Aggiungi una tabella</a></li>
 					</ul>
 				</li>
 				<li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
@@ -375,7 +372,7 @@
 				<button type="submit" class="signupbtn" onclick="accedi_utente();">Entra</button>
 			</div>
 
-			<div class="container" style="background-color:#f1f1f1; width: 100%;">
+			<div class="container" style="background-color:#f1f1f1; width: 95%;">
 				<button type="button" onclick="document.getElementById('login_div').style.display='none'" class="cancelbtn">Annulla</button>
 				<span class="psw">Hai dimenticato la <a href="#">password?</a></span>
 			</div>

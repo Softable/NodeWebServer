@@ -1879,23 +1879,24 @@
 
 /* Form */
 
-	form label {
+	#form label {
 		display: block;
 		font-weight: 400;
 		color: #483949;
 		margin: 0 0 1em 0;
 	}
 
-	form input[type="text"],
-	form input[type="email"],
-	form input[type="password"],
-	form select,
-	form textarea {
+	#form input[type="text"],
+	#form input[type="email"],
+	#form input[type="password"],
+	#form input[type="number"],
+	#form select,
+	#form textarea {
 		-webkit-appearance: none;
 		display: block;
 		border: 0;
 		background: #fafafa;
-		width: 100%;
+		/*width: 100%;*/
 		border-radius: 0.5em;
 		border: solid 1px #E5E5E5;
 		padding: 1em;
@@ -1905,47 +1906,49 @@
 		transition: background-color 0.35s ease-in-out, border-color 0.35s ease-in-out;
 	}
 
-		form input[type="text"]:focus,
-		form input[type="email"]:focus,
-		form input[type="password"]:focus,
-		form select:focus,
-		form textarea:focus {
+		#form input[type="text"]:focus,
+		#form input[type="email"]:focus,
+		#form input[type="password"]:focus,
+		#form input[type="number"]:focus,	
+		#form select:focus,
+		#form textarea:focus {
 			background: #fff;
 			border-color: #df7366;
 		}
 
-	form input[type="text"],
-	form input[type="email"],
-	form input[type="password"],
-	form select {
+	#form input[type="text"],
+	#form input[type="email"],
+	#form input[type="password"],
+	#form input[type="number"],
+	#form select {
 		line-height: 1em;
 	}
 
-	form textarea {
+	#form textarea {
 		min-height: 9em;
 	}
 
-	form .formerize-placeholder {
+	#form .formerize-placeholder {
 		color: #555 !important;
 	}
 
-	form ::-webkit-input-placeholder {
+	#form ::-webkit-input-placeholder {
 		color: #555 !important;
 	}
 
-	form :-moz-placeholder {
+	#form :-moz-placeholder {
 		color: #555 !important;
 	}
 
-	form ::-moz-placeholder {
+	#form ::-moz-placeholder {
 		color: #555 !important;
 	}
 
-	form :-ms-input-placeholder {
+	#form :-ms-input-placeholder {
 		color: #555 !important;
 	}
 
-	form ::-moz-focus-inner {
+	#form ::-moz-focus-inner {
 		border: 0;
 	}
 
@@ -3011,3 +3014,67 @@
 					}
 
 	}
+
+/* AGGIUNTO DA ME INPUT[NUMBER] */
+.quantity {
+  position: relative;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+.quantity input {;
+  line-height: 1.65;
+  border: 1px solid #eee;
+}
+
+.quantity input:focus {
+  outline: 0;
+}
+
+.quantity-nav {
+  float: left;
+  position: relative;
+  height: 42px;
+}
+
+.quantity-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+  width: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  line-height: 1.7;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.quantity-button.quantity-up {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-button.quantity-down {
+  position: absolute;
+  bottom: -1px;
+  height: 50%;
+}

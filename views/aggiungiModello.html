@@ -33,14 +33,39 @@
 	<style>
 		body {
 			background-color: black;
+			color: aliceblue;
 		}
+		
+		#form {
+			width: 50%;
+			margin: 5% 0 0 20%;
+		}
+		
+		#aggiungi {
+			width: 5.5%;
+			height: 5.5%;
+			float: right;
+		}
+		
+		
+		.attributi {
+			width: 70%;
+		}
+		
+		#bttInserisci {
+			position: relative;
+			margin-left: 25%;
+			margin-top: 2%;
+		}
+
 	</style>
 </head>
 	
 <body class="homepage">
 	<!-- DIV DELLA HOME  -->
 	<div id="page-wrapper">
-		<p id="test"></p>
+		<h1 style="text-align: center; margin-top: 8%;">Aggiungi un modello alla tua collezione</h1>
+		<input type="hidden" id="username" />
 		<!-- BARRA DI NAVIGAZIONE -->
 		<nav id="nav">
 			<ul>
@@ -67,14 +92,79 @@
 			</ul>
 		</nav>
  		
+	
+		<div id="form">
+			<h4>Inserisci il nome del modello:</h4>
+			<input style="width: 100%;" type="text" id="nome_modello" />
+			<br>
+
+			<h4>Scegli il numero di attributi che vuoi creare per la tua tabella e clicca sull'immagine a destra:</h4>
+			<div class="quantity">
+				<input  class="quantity" style="width:70%; float:left;" type="number" id="numero_attributi" min="1" max="99" value="1" step="1" />
+			</div>
+			<img src="../assets/images/aggiungi.png" id="aggiungi" onClick="aggiungiAttributi(document.getElementById('numero_attributi').value);" /><br><br><br>
+			<h4>Attributi:</h4>
+		</div>
+
 	</div>
 	
 	<!-- SCRIPT PER LA LETTURA DEL COOKIE E LA SCRITTURA DELL'USERNAME NELLA BARRA IN ALTO -->
 	<script>
 		if (leggiCookie('username') != "null") {
 			document.getElementById('li_log').innerHTML = "<a href='/'>" + leggiCookie('username') + "</a><ul><li><a href='/' onclick='esci();'>Esci</a></li></ul>";
+			document.getElementById('username').value = leggiCookie('username');
 		} else {
 			window.location('/error');
+		}
+		
+	</script>
+	<!-- SCRIPT PER IL FUNZIONAMENTO DELL'INPUT[NUMBER] -->
+	<script>
+		jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
+		jQuery('.quantity').each(function() {
+		  var spinner = jQuery(this),
+			input = spinner.find('input[type="number"]'),
+			btnUp = spinner.find('.quantity-up'),
+			btnDown = spinner.find('.quantity-down'),
+			min = input.attr('min'),
+			max = input.attr('max');
+
+		  btnUp.click(function() {
+			var oldValue = parseFloat(input.val());
+			if (oldValue >= max) {
+			  var newVal = oldValue;
+			} else {
+			  var newVal = oldValue + 1;
+			}
+			spinner.find("input").val(newVal);
+			spinner.find("input").trigger("change");
+		  });
+
+		  btnDown.click(function() {
+			var oldValue = parseFloat(input.val());
+			if (oldValue <= min) {
+			  var newVal = oldValue;
+			} else {
+			  var newVal = oldValue - 1;
+			}
+			spinner.find("input").val(newVal);
+			spinner.find("input").trigger("change");
+		  });
+		});
+		
+		function aggiungiAttributi(value) {
+			
+			if (value < 100 && value > 0) { 
+				for (var i = 0; i < value; i++) {
+					$("#form").append("<input type='text' class='attributi' id='attributo" + i + "' style='margin-top:2%; position:relative;' />");
+				}
+				if (document.getElementById('bttInserisci') != null) {	
+					$("#bttInserisci").remove();					
+				}
+				$("#form").append("<button id='bttInserisci' class='button' type='submit' onClick='inserisci_modello();'>Inserisci</button>");
+			} else {
+				window.alert("Il numero di righe deve essere compreso tra 0 e 99!");
+			}
 		}
 	</script>
 </body>
