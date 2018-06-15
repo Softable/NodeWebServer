@@ -38,7 +38,7 @@ const multerConfig = {
       //get the file mimetype ie 'image/jpeg' split and prefer the second value ie'jpeg'
       const ext = file.mimetype.split('/')[1];
       //set the file fieldname to a unique name containing the original name, current datetime and the extension.
-      next(null, "fotine" + '.' + ext);
+      next(null, file.originalname);
     }
   }),
 
@@ -60,6 +60,8 @@ const multerConfig = {
 };
 
 app.post('/upload', multer(multerConfig).single('photo'),function(req, res){
+
+
     //Here is where I could add functions to then get the url of the new photo
     //And relocate that to a cloud storage solution with a callback containing its new url
     //then ideally loading that into your database solution.   Use case - user uploading an avatar...
