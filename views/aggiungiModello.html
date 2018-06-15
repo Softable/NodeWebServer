@@ -49,13 +49,19 @@
 		
 		
 		.attributi {
-			width: 70%;
+			width: 60%;
+			margin: 2% 5% 0 0; 
+			float:left;
 		}
 		
 		#bttInserisci {
 			position: relative;
 			margin-left: 25%;
 			margin-top: 2%;
+		}
+		
+		.tipiAttributi {
+			margin: 2% 0 0 5%;
 		}
 
 	</style>
@@ -121,6 +127,25 @@
 		}
 		
 	</script>
+	
+	<!-- SCRIPT PER L'AGGIUNTA DI ATTRIBUTI -->
+	<script>
+		function aggiungiAttributi(value) {
+			if (value < 100 && value > 0) { 
+				for (var i = 0; i < value; i++) {
+					$("#form").append("<input type='text' class='attributi' id='attributo" + i + "'/>");
+					$("#form").append("<select class=tipiAttributi><option value=text>Text</option><option value=file>File</option></select>");
+				}
+				if (document.getElementById('bttInserisci') != null) {	
+					$("#bttInserisci").remove();					
+				}
+				$("#form").append("<button id='bttInserisci' class='button' type='submit' onClick='inserisci_modello();'>Inserisci</button>");
+			} else {
+				window.alert("Il numero di righe deve essere compreso tra 0 e 99!");
+			}
+		}
+	</script>
+	
 	<!-- SCRIPT PER IL FUNZIONAMENTO DELL'INPUT[NUMBER] -->
 	<script>
 		jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
@@ -154,21 +179,6 @@
 			spinner.find("input").trigger("change");
 		  });
 		});
-		
-		function aggiungiAttributi(value) {
-			
-			if (value < 100 && value > 0) { 
-				for (var i = 0; i < value; i++) {
-					$("#form").append("<input type='text' class='attributi' id='attributo" + i + "' style='margin-top:2%; position:relative;' />");
-				}
-				if (document.getElementById('bttInserisci') != null) {	
-					$("#bttInserisci").remove();					
-				}
-				$("#form").append("<button id='bttInserisci' class='button' type='submit' onClick='inserisci_modello();'>Inserisci</button>");
-			} else {
-				window.alert("Il numero di righe deve essere compreso tra 0 e 99!");
-			}
-		}
 	</script>
 </body>
 </html>

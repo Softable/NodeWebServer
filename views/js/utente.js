@@ -115,7 +115,7 @@ function accedi_utente() {
 
 function creaCookie(name,value) {
 	document.cookie = name + "=" + value + "; path=/";
-	alert(name+""+value);
+	//alert(name+""+value);
 }
 
 function leggiCookie(name) {
