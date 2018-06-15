@@ -177,7 +177,6 @@
 			<div class="inner">
 				<header>
 					<h1><a href="index.html" id="logo">Softable</a></h1>
-					
 					<p>Another site of data management</p>
 					<p id="test"></p>
 				</header>
@@ -313,18 +312,18 @@
 			</div>
 				
 			<!-- CONTATTI -->
-			<div class="contact" style="position: relative; display: block; bottom: 0%; margin: 1.5% 0 0 0;">
+			<div class="contact inner" style="position: relative; display: block; bottom: 0%; margin: 5% 0 0 0;">
 				<p style="text-align: center">Clicca sulle nostre foto per contattarci: </p>
-				
-				<footer>
-					<a href="https://www.linkedin.com/in/alessandro-garau-8a182214b/" class="button circled scrolly" style="color: inherit; background: inherit;">
+		
+				<header>
+					<a target="_blank" href="https://www.linkedin.com/in/alessandro-garau-8a182214b/" class="button circled scrolly" style="color: inherit; background: inherit;">
 						<img alt="alessandro_garau" src="assets/images/garry.jpg" style="border-radius: 100%; height: 85%; width: 85%;"/>
 					</a>
 					
-					<a href="https://www.linkedin.com/in/ali-haider-maqsood-10589415a/" class="button circled scrolly" style="color: inherit; background: inherit;">
+					<a target="_blank" href="https://www.linkedin.com/in/ali-haider-maqsood-10589415a/" class="button circled scrolly" style="color: inherit; background: inherit;">
 						<img alt="ali_haider_maqsood" src="assets/images/ali.jpg"  style="border-radius: 100%; height: 85%; width: 85%;"/>
 					</a>
-				</footer>
+				</header>
 				
 			</div>
 
@@ -344,7 +343,6 @@
 					<a href="#">Tabelle</a>
 					<ul>
 						<li><a href="../tabella">Le tue tabelle</a></li>
-						<li><a href="../tabella/richiedi">Aggiungi una tabella</a></li>
 					</ul>
 				</li>
 				<li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
@@ -429,8 +427,9 @@
 		if (leggiCookie('username') != "null") {
 			var elem_reg = document.getElementById('li_reg');
 			var elem_log = document.getElementById('li_log');
-    		elem_reg.parentNode.removeChild(elem_reg);
-			elem_log.innerHTML = "<a href='/'>" + leggiCookie('username') + "</a><ul><li><a href='/' onclick='esci();'>Esci</a></li></ul>";
+			elem_log.innerHTML = "<a href='/'>" + leggiCookie('username') + "</a>";
+    		elem_reg.innerHTML = "<a href='/' onclick='esci();'>Esci</a>";
+			
 		} 
   	</script>
 

@@ -24,25 +24,44 @@
     <div class="limiter">
       <!-- BARRA DI NAVIGAZIONE -->
       <div>
-    		<nav id="nav">
-    			<ul>
-    				<li><a href="/">Home</a></li>
-    				<li>
-    					<a href="#">Tabelle</a>
-    					<ul>
-    						<li><a href="/modello">I tuoi modelli</a></li>
-    						<li><a href="/tabella">Le tue tabelle</a></li>
-    					</ul>
-    				</li>
-    				<li><a href="index.html"><img src="assets/images/logo.png" id="logo_softable" alt="logo_softable"></a></li>
-    				<li id="li_log"><a href="#" onclick="document.getElementById('login_div').style.display='block'" style="width:auto;">Accedi</a></li>
-    				<li id="li_reg"><a href="#" onclick="document.getElementById('register_div').style.display='block'" style="width:auto;">Registrati</a></li>
-    			</ul>
-    		</nav>
+    	<nav id="nav">
+			<ul>
+				<li>
+					<a href="#">Modelli</a>
+					<ul>
+						<li><a href="../modello">I tuoi modelli</a></li>
+						<li><a href="../modello/aggiungi">Aggiungi un modello</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Tabelle</a>
+					<ul>
+						<li><a href="../tabella">Le tue tabelle</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="../">
+						<img src="../assets/images/logo.png" id="logo_softable" alt="logo_softable">
+					</a>
+				</li>
+				<li id="li_log"><a href="../"></a></li>
+				<li id="li_reg"><a href="../"></a></li>
+			</ul>
+		</nav>
       </div>
     	<div class="container-table100">
         <div class="wrap-table100" id="tables-container"></div>
       </div>
     </div>
+	  
+	  <!-- SCRIPT PER LA LETTURA DEL COOKIE E LA SCRITTURA DELL'USERNAME NELLA BARRA IN ALTO -->
+	<script>
+		if (leggiCookie('username') != "null") {
+			document.getElementById('li_log').innerHTML = "<a href='/'>" + leggiCookie('username') + "</a>";
+			document.getElementById('li_reg').innerHTML = "<a href='/' onclick='esci();'>Esci</a>";
+		} else {
+			window.location('/error');
+		}
+	</script>
   </body>
 </html>

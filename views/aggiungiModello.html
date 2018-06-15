@@ -80,7 +80,6 @@
 					<a href="#">Tabelle</a>
 					<ul>
 						<li><a href="../tabella">Le tue tabelle</a></li>
-						<li><a href="../tabella/richiedi">Aggiungi una tabella</a></li>
 					</ul>
 				</li>
 				<li>
@@ -89,6 +88,7 @@
 					</a>
 				</li>
 				<li id="li_log"><a href="../"></a></li>
+				<li id="li_reg"><a href="../"></a></li>
 			</ul>
 		</nav>
  		
@@ -113,7 +113,8 @@
 	<!-- SCRIPT PER LA LETTURA DEL COOKIE E LA SCRITTURA DELL'USERNAME NELLA BARRA IN ALTO -->
 	<script>
 		if (leggiCookie('username') != "null") {
-			document.getElementById('li_log').innerHTML = "<a href='/'>" + leggiCookie('username') + "</a><ul><li><a href='/' onclick='esci();'>Esci</a></li></ul>";
+			document.getElementById('li_log').innerHTML = "<a href='/'>" + leggiCookie('username') + "</a>";
+			document.getElementById('li_reg').innerHTML = "<a href='/' onclick='esci();'>Esci</a>";
 			document.getElementById('username').value = leggiCookie('username');
 		} else {
 			window.location('/error');
