@@ -40,25 +40,30 @@ function richiedi_modello(id_modello){
 			modello.nome_modello = data.nome_modello;
 			modello.username = data.username;
 			modello.attributi = data.attributi;
+			modello.tipiAttributi = data.tipiAttributi;
 		}
 	});
 	return modello;
 }
 
 function inserisci_modello() {
-	var modello = {}, attributi = [], elemento, username;
+	var modello = {}, attributi = [], tipiAttributi = [], attributo, tipoAttributo, username, i;
 	username = document.getElementById('username').value;
-	for (var i = 0; i < document.getElementsByClassName('attributi').length; i++) {
-		elemento = document.getElementsByClassName('attributi')[i].value;
-		if (elemento !== null && elemento !== '' && elemento !== 'null') {
-			attributi.push(elemento);	
+	// INSERISCO SOLO GLI ATTRIBUTI CHE NON SONO VUOTI
+	for (i = 0; i < document.getElementsByClassName('attributi').length; i++) {
+		attributo = document.getElementsByClassName('attributi')[i].value;
+		tipoAttributo = document.getElementsByClassName('tipiAttributi')[i].value;
+		if (attributo !== null && attributo !== '' && attributo !== 'null') {
+			attributi.push(attributo);	
+			tipiAttributi.push(tipoAttributo);
 		}
 	}
 	modello = {
 		"id_modello" : 0,
 		"nome_modello" : document.getElementById('nome_modello').value,
 		"username" : username,
-		"attributi" : attributi
+		"attributi" : attributi,
+		"tipiAttributi" : tipiAttributi
 	};
 	$.ajax({
 		url: "http://localhost:8080/modello/inserisci",
@@ -72,14 +77,21 @@ function inserisci_modello() {
 }
 
 function modifica_modello(id_modello) {
-	var modello = {}, attributi = [];
-	for (var i = 0; i < document.getElementsByName('att').length; i++) {
-		attributi[i] = document.getElementsByName('att')[i].value;
+	var modello = {}, nuoviAttributi = [], vecchiAttributi = [], tipiAttributi = [], username, i;
+	tipiAttributi = richiedi_modello(id_modello).tipiAttributi;
+	username = richiedi_modello(id_modello).username;
+	vecchiAttributi = document.getElementsByClassName('nuoviAttributi' + id_modello);
+	for (i = 0; i < vecchiAttributi.length; i++) {
+		if (vecchiAttributi[i].value !== null && vecchiAttributi[i].value !== 'null' && vecchiAttributi[i].value !== '') {
+			nuoviAttributi.push(vecchiAttributi[i].value);
+		}
 	}
 	modello = {
-		"id_modello" : parseInt(document.getElementById("id_modello").value),
-		"nome_modello" : document.getElementById("nome_modello").value,
-		"attributi" : attributi
+		"id_modello" : parseInt(id_modello),
+		"nome_modello" : document.getElementById("nuovoNome" + id_modello).value,
+		"username" : username,
+		"attributi" : nuoviAttributi,
+		"tipiAttributi" : tipiAttributi
 	};
 	$.ajax({
 		url : "http://localhost:8080/modello/modifica",
@@ -89,9 +101,9 @@ function modifica_modello(id_modello) {
 		dataType: "json"
 	}).done(function (esito) {
 		if (esito) {
-			window.location.href = '../modello';
+			location.href = '../modello';
 		} else {
-			window.location.href = '../error';
+			location.href = '../error';
 		}
 	});
 }
@@ -128,10 +140,10 @@ function visualizzaModelliInPagina(username) {
 			tabella += "<td class='cell100 column" + (cont++) + "'>" + modello.attributi[i] + "</td>";
 		}
 		tabella += "</tr></tbody></table></div></div>";
-		$("#modelli").append("<div id='utilityButtons" + id_modello + "'></div>");
-		$("#utilityButtons" + id_modello).append("<button class=button type=submit style='clear:right;'>Crea Tabella</button>");
-		$("#utilityButtons" + id_modello).append("<button id='bttModify" + id_modello + "' class=button type=submit style='clear:right;' onClick=acquisizione_dati(" + id_modello + ");>Modifica modello</button>");
-		$("#utilityButtons" + id_modello).append("<button class=button type=submit style='clear:right;' onClick=elimina_modello(" + id_modello + ");>Elimina</button>");
+		$("#modelli").append("<div class='utilityButtons' id='utilityButtons" + id_modello + "'></div>");
+		$("#utilityButtons" + id_modello).append("<button class=button type=submit onClick=location.href='../creaTabella?id_modello=" + id_modello + "'>Crea Tabella</button>");
+		$("#utilityButtons" + id_modello).append("<button id='bttModify" + id_modello + "' class=button type=submit onClick=acquisizione_dati(" + id_modello + ");>Modifica modello</button>");
+		$("#utilityButtons" + id_modello).append("<button class=button type=submit onClick=elimina_modello(" + id_modello + ");>Elimina</button>");
 		$("#modelli").append(tabella);	
 	});
 }
@@ -149,5 +161,5 @@ function acquisizione_dati(id_modello) {
 			$(this).html("<input type=text class='nuoviAttributi" + id_modello + "' value=" + $(this).text() + " />");
 		});
 	});
-	$("#bttModify" + id_modello).replaceWith("<button class='button modify' type=submit style=''>Annulla</button><button class='button modify' type=submit style=''>Salva</button>");
+	$("#bttModify" + id_modello).replaceWith("<button class='button modify save' type=submit onClick=modifica_modello(" + id_modello + ")>Salva</button><button class='button modify cancel' type=submit onClick=location.href='../modello'>Annulla</button>");
 }
