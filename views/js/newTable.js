@@ -1,6 +1,5 @@
 function genera_tabella(){
-	var modello = leggiCookie('modello');
-  modello = "23";
+	var modello = (window.location.href).split("id_modello=")[1];
 	if(modello=="null")
 		alert("Seleziona un modello dalla pagina dei modelli.");
 	else{
