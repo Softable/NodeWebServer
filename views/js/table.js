@@ -238,6 +238,25 @@ function modifica_tabella(id_tabella,username,modello,dati) {
     });
 }
 
+function aggiungiFile(nomeFile,id){
+	$(document).ready(function() {
+			var obj = {};
+			obj = {
+				"nome":nomeFile,
+				"id":id
+			};
+			$.ajax({
+					url: "http://localhost:8080/tabella/upload",
+					type: "POST",
+					contentType: "application/json",
+					data: JSON.stringify(obj),
+					dataType: "json"
+			}).done(function (esito) {
+					console.log("Esito inserimento: "+esito);
+			});
+	});
+}
+
 function change_color(version) {
 		document.getElementById("div_table").className= "table100 ver" + version + " m-b-110";
 		document.getElementsByTagName("table")[0].setAttribute("data-vertable", "ver" + version);
