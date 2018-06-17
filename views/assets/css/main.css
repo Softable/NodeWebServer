@@ -2068,13 +2068,13 @@
 	#header {
 		position: relative;
 		/*height: 100%;*/
-		background-image: url("../images/1.png");
+		background-image: url("../images/indexWallpaper.png");
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;
 		color: #fff;
 		text-align: center;
-		padding: 7.5em 0 2em 0;
+		padding: 5% 0 0 0;
 		cursor: default;
 	}
 

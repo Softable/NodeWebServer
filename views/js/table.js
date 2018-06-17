@@ -50,8 +50,13 @@ function inserisci_tabella_inPagina(id,ver){
 				}
 				var cella = riga.insertCell(k);
 				cella.id=id+"cella"+(i+1); //Inserimento di una cella con il dato; l'id è id_tabella+"ccella"+indice cella
-				var dato = tabella.valori[i];
-				cella.innerHTML+=(dato);
+				if(modello.tipiAttributi[i]=="file"){
+					var dato = "<a href='img/"+tabella.valori[i]+"' target='_blank'>"+tabella.valori[i]+"</a>";
+					cella.innerHTML+=(dato);
+				}else{
+					var dato = tabella.valori[i];
+					cella.innerHTML+=(dato);
+				}
 				document.getElementById(id+"cella"+(i+1)).setAttribute("class", "cell100 column");
 			}
 		}
@@ -203,18 +208,19 @@ function richiedi_tabella(id_tabella){
 }
 
 function richiedi_modello(id_modello){
-    var modello = {};
-    $.ajax({
-      url: 'http://localhost:8080/modello/richiedi/' + id_modello,
-      type: 'GET',
-      async: false,
-      success: function(data) {
-        modello.id_modello = id_modello;
-        modello.nome_modello = data.nome_modello;
-        modello.attributi = data.attributi;
-      }
-    });
-    return modello;
+	var modello = {};
+	$.ajax({
+		url: 'http://localhost:8080/modello/richiedi/' + id_modello,
+		type: 'GET',
+		async: false,
+		success: function(data) {
+			modello.id_modello = data.id_modello;
+			modello.nome_modello = data.nome_modello;
+			modello.attributi = data.attributi;
+			modello.tipiAttributi = data.tipiAttributi;
+		}
+	});
+	return modello;
 }
 
 function modifica_tabella(id_tabella,username,modello,dati) {

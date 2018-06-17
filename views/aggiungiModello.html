@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Aggiungi Modello</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	
+
     <!--[[   CSS   ]]-->
 	<!-- CSS del template -->
     <link rel="stylesheet" href="../assets/css/main.css" />
@@ -15,8 +15,8 @@
 	<link rel="stylesheet" href="../vendor/animate/animate.css" />
 	<link rel="stylesheet" href="../vendor/select2/select2.min.css" />
 	<link rel="stylesheet" href="../vendor/perfect-scrollbar/perfect-scrollbar.css" />
-	
-	
+
+
     <!--[[   SCRIPT   ]]-->
 	<!-- Script del template Helios -->
     <script src="../assets/js/jquery.min.js"></script>
@@ -29,44 +29,51 @@
 	<!-- Script vari -->
     <script src="../js/utente.js"></script>
 	<script src="../js/modello.js"></script>
-	
+
 	<style>
+	h1,h2,h3,h4{
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
 		body {
-			background-color: black;
+			background-image: url("/assets/images/universe4.jpg");
 			color: aliceblue;
 		}
-		
+
 		#form {
 			width: 50%;
 			margin: 5% 0 0 20%;
 		}
-		
+
 		#aggiungi {
 			width: 5.5%;
 			height: 5.5%;
 			float: right;
 		}
-		
-		
+
+
 		.attributi {
 			width: 60%;
-			margin: 2% 5% 0 0; 
+			margin: 2% 5% 0 0;
 			float:left;
 		}
-		
+
 		#bttInserisci {
 			position: relative;
 			margin-left: 25%;
 			margin-top: 2%;
 		}
-		
+
+		.icone:hover {
+		    cursor: pointer;
+		}
+
 		.tipiAttributi {
 			margin: 2% 0 0 5%;
 		}
 
 	</style>
 </head>
-	
+
 <body class="homepage">
 	<!-- DIV DELLA HOME  -->
 	<div id="page-wrapper">
@@ -97,8 +104,8 @@
 				<li id="li_reg"><a href="../"></a></li>
 			</ul>
 		</nav>
- 		
-	
+
+
 		<div id="form">
 			<h4>Inserisci il nome del modello:</h4>
 			<input style="width: 100%;" type="text" id="nome_modello" />
@@ -108,14 +115,14 @@
 			<div class="quantity">
 				<input  class="quantity" style="width:70%; float:left;" type="number" id="numero_attributi" min="1" max="99" value="1" step="1" />
 			</div>
-			<img src="../assets/images/aggiungi.png" id="aggiungi" onClick="aggiungiAttributi(document.getElementById('numero_attributi').value);" /><br><br><br>
+			<img class="icone" src="../assets/images/aggiungi.png" id="aggiungi" onClick="aggiungiAttributi(document.getElementById('numero_attributi').value);" /><br><br><br>
 			<h4>Attributi:</h4>
 		</div>
-		
-		
+
+
 
 	</div>
-	
+
 	<!-- SCRIPT PER LA LETTURA DEL COOKIE E LA SCRITTURA DELL'USERNAME NELLA BARRA IN ALTO -->
 	<script>
 		if (leggiCookie('username') != "null") {
@@ -125,19 +132,19 @@
 		} else {
 			window.location('/error');
 		}
-		
+
 	</script>
-	
+
 	<!-- SCRIPT PER L'AGGIUNTA DI ATTRIBUTI -->
 	<script>
 		function aggiungiAttributi(value) {
-			if (value < 100 && value > 0) { 
+			if (value < 100 && value > 0) {
 				for (var i = 0; i < value; i++) {
 					$("#form").append("<input type='text' class='attributi' id='attributo" + i + "'/>");
 					$("#form").append("<select class=tipiAttributi><option value=text>Text</option><option value=file>File</option></select>");
 				}
-				if (document.getElementById('bttInserisci') != null) {	
-					$("#bttInserisci").remove();					
+				if (document.getElementById('bttInserisci') != null) {
+					$("#bttInserisci").remove();
 				}
 				$("#form").append("<button id='bttInserisci' class='button' type='submit' onClick='inserisci_modello();'>Inserisci</button>");
 			} else {
@@ -145,7 +152,7 @@
 			}
 		}
 	</script>
-	
+
 	<!-- SCRIPT PER IL FUNZIONAMENTO DELL'INPUT[NUMBER] -->
 	<script>
 		jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
