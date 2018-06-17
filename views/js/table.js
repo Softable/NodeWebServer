@@ -51,6 +51,7 @@ function inserisci_tabella_inPagina(id,ver){
 				var cella = riga.insertCell(k);
 				cella.id=id+"cella"+(i+1); //Inserimento di una cella con il dato; l'id è id_tabella+"ccella"+indice cella
 				if(modello.tipiAttributi[i]=="file"){
+					richiedi_file(tabella.valori[i]);
 					var dato = "<a href='img/"+tabella.valori[i]+"' target='_blank'>"+tabella.valori[i]+"</a>";
 					cella.innerHTML+=(dato);
 				}else{
@@ -205,6 +206,17 @@ function richiedi_tabella(id_tabella){
         }
       });
       return tabella;
+}
+
+function richiedi_file(nome){
+	$.ajax({
+			url: 'http://localhost:8080/tabella/richiediFile/' + nome,
+			type: 'GET',
+			async: false,
+			success: function(data) {
+					console.log(data);
+			}
+		});
 }
 
 function richiedi_modello(id_modello){
