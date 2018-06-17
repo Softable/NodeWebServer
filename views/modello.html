@@ -105,11 +105,11 @@
 
 	<!-- SCRIPT PER LA LETTURA DEL COOKIE E LA SCRITTURA DELL'USERNAME NELLA BARRA IN ALTO -->
 	<script>
-		if (leggiCookie('username') != "null") {
+		if (leggiCookie('username') != 'null') {
 			document.getElementById('li_log').innerHTML = "<a href='/'>" + leggiCookie('username') + "</a>";
 			document.getElementById('li_reg').innerHTML = "<a href='/' onclick='esci();'>Esci</a>";
 		} else {
-			window.location('/error');
+			window.location.href = '../';
 		}
 	</script>
 </body>

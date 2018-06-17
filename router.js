@@ -70,7 +70,7 @@ module.exports = function(app)
         res.render('tabella/modifica.html');
     });
 
-    app.get('/error.html', function(req,res) {
+    app.get('/error', function(req,res) {
         res.render('error.html');
     });
 
