@@ -1,0 +1,36 @@
+/* CSS Document */
+body {
+			background-color: black;
+		}
+
+		#modelli {
+			margin-top: 8%;
+		}
+
+		.button {
+			width: 100%;
+			height: 4% !important;
+			margin-bottom: 1%;
+			clear: right;
+			font-size: 0.8em;
+		}
+
+		.modify {
+			width: 48%;
+			text-align: center;
+		}
+
+		.utilityButtons {
+			float: right;
+			width: 11.5%;
+			margin-right: 4%;
+		}
+
+		.save {
+			margin-right:3%;
+			background:#50C878;
+		}
+
+		.cancel {
+			background: #960018;
+		}
