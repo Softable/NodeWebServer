@@ -56,11 +56,13 @@ function inserisci_utente() {
 					creaCookie('username', document.getElementById('reg_username').value, 10);
 					window.location.replace("/");
 				} else {
-					window.location.replace("/error?type=1");
+					alert("L'username è è gia stato utilizzato, cambialo");
+					location.href = '/';
 				}
 			});
 		} else {
-			window.location.replace("/error?type=2");
+			alert('Le due password non combaciano');
+			location.href = '/';
 		}
 	});
 }
@@ -109,7 +111,7 @@ function accedi_utente() {
 		creaCookie('username', document.getElementById('username').value);
 		window.location.replace("/");
 	} else {
-		window.location.replace("/error");
+		alert("La password o l'username non sono corretti!");
 	}
 }
 
