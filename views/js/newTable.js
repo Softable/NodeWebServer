@@ -52,7 +52,7 @@ function tabella_input(id_modello){
 	if(filebttn){
 		$("#form").append('<input type="submit" name="Upload" value="Upload Photo" onclick="creaTabella('+id_modello+');" />');
 	}else{
-					$("#limiter").append("<img type='submit' class='icone' src='assets/images/aggiungiTabella.png' title='Conferma la nuova Tabella' style='margin-bottom:30px; align:center;' id='Conferma' onclick='creaTabella("+id_modello+");' >");
+					$("#limiter").append("<img type='submit' class='icone' src='assets/images/aggiungiTabella.png' title='Conferma la nuova Tabella' style='margin-bottom:30px; align:center;' id='Conferma' onclick=creaTabella("+id_modello+");location.href='../tabella' >");
 	}
 }
 
